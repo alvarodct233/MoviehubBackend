@@ -31,12 +31,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 5.12.1
- * Query Engine version: 473ed3124229e22d881cb7addf559799debae1ab
+ * Prisma Client JS version: 5.13.0
+ * Query Engine version: b9a39a7ee606c28e3455d0fd60e78c3ba82b1a2b
  */
 Prisma.prismaVersion = {
-  client: "5.12.1",
-  engine: "473ed3124229e22d881cb7addf559799debae1ab"
+  client: "5.13.0",
+  engine: "b9a39a7ee606c28e3455d0fd60e78c3ba82b1a2b"
 }
 
 Prisma.PrismaClientKnownRequestError = PrismaClientKnownRequestError;
@@ -145,7 +145,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\alvar\\assembler\\backend\\movie-hub-backend\\Backend\\prisma\\generated\\postgres_client",
+      "value": "C:\\Users\\alvar\\alv-pro\\clones\\MoviehubBackend\\prisma\\generated\\postgres_client",
       "fromEnvVar": null
     },
     "config": {
@@ -168,12 +168,13 @@ const config = {
     "schemaEnvPath": "../../../.env"
   },
   "relativePath": "../..",
-  "clientVersion": "5.12.1",
-  "engineVersion": "473ed3124229e22d881cb7addf559799debae1ab",
+  "clientVersion": "5.13.0",
+  "engineVersion": "b9a39a7ee606c28e3455d0fd60e78c3ba82b1a2b",
   "datasourceNames": [
     "db"
   ],
   "activeProvider": "postgresql",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
@@ -182,8 +183,8 @@ const config = {
       }
     }
   },
-  "inlineSchema": "generator client {\n    provider        = \"prisma-client-js\"\n    previewFeatures = [\"driverAdapters\"]\n    output          = \"./generated/postgres_client\"\n}\n\ndatasource db {\n    provider = \"postgresql\"\n    url      = env(\"POSTGRESQL_URL\")\n}\n\nmodel User {\n    id       Int      @id @default(autoincrement())\n    name     String   @db.VarChar(255)\n    email    String   @unique @db.VarChar(100)\n    password String   @db.VarChar(255)\n    createAt DateTime @default(now())\n    updateAt DateTime @updatedAt\n    movies   Movies[]\n}\n\nmodel Movies {\n    id       Int      @id @default(autoincrement())\n    name     String   @db.VarChar(255)\n    image    String   @db.VarChar(255)\n    createAt DateTime @default(now())\n    updateAt DateTime @updatedAt\n    userId   Int\n    user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)\n    genres   MovieGenre[]\n}\n\nmodel Genre {\n    id       Int      @id @default(autoincrement())\n    name     String   @db.VarChar(255)\n    createAt DateTime @default(now())\n    updateAt DateTime @updatedAt\n    movies   MovieGenre[]\n    }\n\nmodel MovieGenre {\n    movieId Int\n    genreId Int\n    movie   Movies @relation(fields: [movieId], references: [id])\n    genre   Genre  @relation(fields: [genreId], references: [id])\n\n    @@id([movieId, genreId])\n}",
-  "inlineSchemaHash": "0f4005dd27182e9dba771f59c374582ee28e5e76d4ff423c50fbad6b5029e357",
+  "inlineSchema": "generator client {\r\n    provider        = \"prisma-client-js\"\r\n    previewFeatures = [\"driverAdapters\"]\r\n    output          = \"./generated/postgres_client\"\r\n}\r\n\r\ndatasource db {\r\n    provider = \"postgresql\"\r\n    url      = env(\"POSTGRESQL_URL\")\r\n}\r\n\r\nmodel User {\r\n    id       Int      @id @default(autoincrement())\r\n    name     String   @db.VarChar(255)\r\n    email    String   @unique @db.VarChar(100)\r\n    password String   @db.VarChar(255)\r\n    createAt DateTime @default(now())\r\n    updateAt DateTime @updatedAt\r\n    movies   Movies[]\r\n}\r\n\r\nmodel Movies {\r\n    id       Int      @id @default(autoincrement())\r\n    name     String   @db.VarChar(255)\r\n    image    String   @db.VarChar(255)\r\n    createAt DateTime @default(now())\r\n    updateAt DateTime @updatedAt\r\n    userId   Int\r\n    user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)\r\n    genres   MovieGenre[]\r\n}\r\n\r\nmodel Genre {\r\n    id       Int      @id @default(autoincrement())\r\n    name     String   @db.VarChar(255)\r\n    createAt DateTime @default(now())\r\n    updateAt DateTime @updatedAt\r\n    movies   MovieGenre[]\r\n    }\r\n\r\nmodel MovieGenre {\r\n    movieId Int\r\n    genreId Int\r\n    movie   Movies @relation(fields: [movieId], references: [id])\r\n    genre   Genre  @relation(fields: [genreId], references: [id])\r\n\r\n    @@id([movieId, genreId])\r\n}",
+  "inlineSchemaHash": "22981e294115ea187ce9e38d45989bd49f5342322ee6f5f85cd88c4e84fc68f6",
   "copyEngine": true
 }
 config.dirname = '/'

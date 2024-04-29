@@ -252,8 +252,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 5.12.1
-   * Query Engine version: 473ed3124229e22d881cb7addf559799debae1ab
+   * Prisma Client JS version: 5.13.0
+   * Query Engine version: b9a39a7ee606c28e3455d0fd60e78c3ba82b1a2b
    */
   export type PrismaVersion = {
     client: string
@@ -380,6 +380,11 @@ export namespace Prisma {
     include: any
   }
 
+  type SelectAndOmit = {
+    select: any
+    omit: any
+  }
+
   /**
    * Get the type of the value, that the Promise holds.
    */
@@ -428,7 +433,9 @@ export namespace Prisma {
   } &
     (T extends SelectAndInclude
       ? 'Please either choose `select` or `include`.'
-      : {})
+      : T extends SelectAndOmit
+        ? 'Please either choose `select` or `omit`.'
+        : {})
 
   /**
    * Subset + Intersection
@@ -1124,7 +1131,6 @@ export namespace Prisma {
   }
 
   // Custom InputTypes
-
   /**
    * UserCountOutputType without action
    */
@@ -1135,14 +1141,12 @@ export namespace Prisma {
     select?: UserCountOutputTypeSelect<ExtArgs> | null
   }
 
-
   /**
    * UserCountOutputType without action
    */
   export type UserCountOutputTypeCountMoviesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: MoviesWhereInput
   }
-
 
 
   /**
@@ -1158,7 +1162,6 @@ export namespace Prisma {
   }
 
   // Custom InputTypes
-
   /**
    * MoviesCountOutputType without action
    */
@@ -1169,14 +1172,12 @@ export namespace Prisma {
     select?: MoviesCountOutputTypeSelect<ExtArgs> | null
   }
 
-
   /**
    * MoviesCountOutputType without action
    */
   export type MoviesCountOutputTypeCountGenresArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: MovieGenreWhereInput
   }
-
 
 
   /**
@@ -1192,7 +1193,6 @@ export namespace Prisma {
   }
 
   // Custom InputTypes
-
   /**
    * GenreCountOutputType without action
    */
@@ -1203,14 +1203,12 @@ export namespace Prisma {
     select?: GenreCountOutputTypeSelect<ExtArgs> | null
   }
 
-
   /**
    * GenreCountOutputType without action
    */
   export type GenreCountOutputTypeCountMoviesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: MovieGenreWhereInput
   }
-
 
 
   /**
@@ -1435,6 +1433,7 @@ export namespace Prisma {
     createAt?: boolean
     updateAt?: boolean
   }
+
 
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     movies?: boolean | User$moviesArgs<ExtArgs>
@@ -1859,7 +1858,6 @@ export namespace Prisma {
     
 
   // Custom InputTypes
-
   /**
    * User findUnique
    */
@@ -1869,7 +1867,7 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: UserInclude<ExtArgs> | null
     /**
@@ -1877,7 +1875,6 @@ export namespace Prisma {
      */
     where: UserWhereUniqueInput
   }
-
 
   /**
    * User findUniqueOrThrow
@@ -1888,7 +1885,7 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: UserInclude<ExtArgs> | null
     /**
@@ -1896,7 +1893,6 @@ export namespace Prisma {
      */
     where: UserWhereUniqueInput
   }
-
 
   /**
    * User findFirst
@@ -1907,7 +1903,7 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: UserInclude<ExtArgs> | null
     /**
@@ -1945,7 +1941,6 @@ export namespace Prisma {
      */
     distinct?: UserScalarFieldEnum | UserScalarFieldEnum[]
   }
-
 
   /**
    * User findFirstOrThrow
@@ -1956,7 +1951,7 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: UserInclude<ExtArgs> | null
     /**
@@ -1995,7 +1990,6 @@ export namespace Prisma {
     distinct?: UserScalarFieldEnum | UserScalarFieldEnum[]
   }
 
-
   /**
    * User findMany
    */
@@ -2005,7 +1999,7 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: UserInclude<ExtArgs> | null
     /**
@@ -2039,7 +2033,6 @@ export namespace Prisma {
     distinct?: UserScalarFieldEnum | UserScalarFieldEnum[]
   }
 
-
   /**
    * User create
    */
@@ -2049,7 +2042,7 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: UserInclude<ExtArgs> | null
     /**
@@ -2057,7 +2050,6 @@ export namespace Prisma {
      */
     data: XOR<UserCreateInput, UserUncheckedCreateInput>
   }
-
 
   /**
    * User createMany
@@ -2070,7 +2062,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-
   /**
    * User update
    */
@@ -2080,7 +2071,7 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: UserInclude<ExtArgs> | null
     /**
@@ -2092,7 +2083,6 @@ export namespace Prisma {
      */
     where: UserWhereUniqueInput
   }
-
 
   /**
    * User updateMany
@@ -2108,7 +2098,6 @@ export namespace Prisma {
     where?: UserWhereInput
   }
 
-
   /**
    * User upsert
    */
@@ -2118,7 +2107,7 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: UserInclude<ExtArgs> | null
     /**
@@ -2135,7 +2124,6 @@ export namespace Prisma {
     update: XOR<UserUpdateInput, UserUncheckedUpdateInput>
   }
 
-
   /**
    * User delete
    */
@@ -2145,7 +2133,7 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: UserInclude<ExtArgs> | null
     /**
@@ -2153,7 +2141,6 @@ export namespace Prisma {
      */
     where: UserWhereUniqueInput
   }
-
 
   /**
    * User deleteMany
@@ -2165,7 +2152,6 @@ export namespace Prisma {
     where?: UserWhereInput
   }
 
-
   /**
    * User.movies
    */
@@ -2175,7 +2161,7 @@ export namespace Prisma {
      */
     select?: MoviesSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: MoviesInclude<ExtArgs> | null
     where?: MoviesWhereInput
@@ -2186,7 +2172,6 @@ export namespace Prisma {
     distinct?: MoviesScalarFieldEnum | MoviesScalarFieldEnum[]
   }
 
-
   /**
    * User without action
    */
@@ -2196,11 +2181,10 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: UserInclude<ExtArgs> | null
   }
-
 
 
   /**
@@ -2426,6 +2410,7 @@ export namespace Prisma {
     updateAt?: boolean
     userId?: boolean
   }
+
 
   export type MoviesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -2854,7 +2839,6 @@ export namespace Prisma {
     
 
   // Custom InputTypes
-
   /**
    * Movies findUnique
    */
@@ -2864,7 +2848,7 @@ export namespace Prisma {
      */
     select?: MoviesSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: MoviesInclude<ExtArgs> | null
     /**
@@ -2872,7 +2856,6 @@ export namespace Prisma {
      */
     where: MoviesWhereUniqueInput
   }
-
 
   /**
    * Movies findUniqueOrThrow
@@ -2883,7 +2866,7 @@ export namespace Prisma {
      */
     select?: MoviesSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: MoviesInclude<ExtArgs> | null
     /**
@@ -2891,7 +2874,6 @@ export namespace Prisma {
      */
     where: MoviesWhereUniqueInput
   }
-
 
   /**
    * Movies findFirst
@@ -2902,7 +2884,7 @@ export namespace Prisma {
      */
     select?: MoviesSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: MoviesInclude<ExtArgs> | null
     /**
@@ -2940,7 +2922,6 @@ export namespace Prisma {
      */
     distinct?: MoviesScalarFieldEnum | MoviesScalarFieldEnum[]
   }
-
 
   /**
    * Movies findFirstOrThrow
@@ -2951,7 +2932,7 @@ export namespace Prisma {
      */
     select?: MoviesSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: MoviesInclude<ExtArgs> | null
     /**
@@ -2990,7 +2971,6 @@ export namespace Prisma {
     distinct?: MoviesScalarFieldEnum | MoviesScalarFieldEnum[]
   }
 
-
   /**
    * Movies findMany
    */
@@ -3000,7 +2980,7 @@ export namespace Prisma {
      */
     select?: MoviesSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: MoviesInclude<ExtArgs> | null
     /**
@@ -3034,7 +3014,6 @@ export namespace Prisma {
     distinct?: MoviesScalarFieldEnum | MoviesScalarFieldEnum[]
   }
 
-
   /**
    * Movies create
    */
@@ -3044,7 +3023,7 @@ export namespace Prisma {
      */
     select?: MoviesSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: MoviesInclude<ExtArgs> | null
     /**
@@ -3052,7 +3031,6 @@ export namespace Prisma {
      */
     data: XOR<MoviesCreateInput, MoviesUncheckedCreateInput>
   }
-
 
   /**
    * Movies createMany
@@ -3065,7 +3043,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-
   /**
    * Movies update
    */
@@ -3075,7 +3052,7 @@ export namespace Prisma {
      */
     select?: MoviesSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: MoviesInclude<ExtArgs> | null
     /**
@@ -3087,7 +3064,6 @@ export namespace Prisma {
      */
     where: MoviesWhereUniqueInput
   }
-
 
   /**
    * Movies updateMany
@@ -3103,7 +3079,6 @@ export namespace Prisma {
     where?: MoviesWhereInput
   }
 
-
   /**
    * Movies upsert
    */
@@ -3113,7 +3088,7 @@ export namespace Prisma {
      */
     select?: MoviesSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: MoviesInclude<ExtArgs> | null
     /**
@@ -3130,7 +3105,6 @@ export namespace Prisma {
     update: XOR<MoviesUpdateInput, MoviesUncheckedUpdateInput>
   }
 
-
   /**
    * Movies delete
    */
@@ -3140,7 +3114,7 @@ export namespace Prisma {
      */
     select?: MoviesSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: MoviesInclude<ExtArgs> | null
     /**
@@ -3148,7 +3122,6 @@ export namespace Prisma {
      */
     where: MoviesWhereUniqueInput
   }
-
 
   /**
    * Movies deleteMany
@@ -3160,7 +3133,6 @@ export namespace Prisma {
     where?: MoviesWhereInput
   }
 
-
   /**
    * Movies.genres
    */
@@ -3170,7 +3142,7 @@ export namespace Prisma {
      */
     select?: MovieGenreSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: MovieGenreInclude<ExtArgs> | null
     where?: MovieGenreWhereInput
@@ -3181,7 +3153,6 @@ export namespace Prisma {
     distinct?: MovieGenreScalarFieldEnum | MovieGenreScalarFieldEnum[]
   }
 
-
   /**
    * Movies without action
    */
@@ -3191,11 +3162,10 @@ export namespace Prisma {
      */
     select?: MoviesSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: MoviesInclude<ExtArgs> | null
   }
-
 
 
   /**
@@ -3398,6 +3368,7 @@ export namespace Prisma {
     createAt?: boolean
     updateAt?: boolean
   }
+
 
   export type GenreInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     movies?: boolean | Genre$moviesArgs<ExtArgs>
@@ -3818,7 +3789,6 @@ export namespace Prisma {
     
 
   // Custom InputTypes
-
   /**
    * Genre findUnique
    */
@@ -3828,7 +3798,7 @@ export namespace Prisma {
      */
     select?: GenreSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: GenreInclude<ExtArgs> | null
     /**
@@ -3836,7 +3806,6 @@ export namespace Prisma {
      */
     where: GenreWhereUniqueInput
   }
-
 
   /**
    * Genre findUniqueOrThrow
@@ -3847,7 +3816,7 @@ export namespace Prisma {
      */
     select?: GenreSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: GenreInclude<ExtArgs> | null
     /**
@@ -3855,7 +3824,6 @@ export namespace Prisma {
      */
     where: GenreWhereUniqueInput
   }
-
 
   /**
    * Genre findFirst
@@ -3866,7 +3834,7 @@ export namespace Prisma {
      */
     select?: GenreSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: GenreInclude<ExtArgs> | null
     /**
@@ -3904,7 +3872,6 @@ export namespace Prisma {
      */
     distinct?: GenreScalarFieldEnum | GenreScalarFieldEnum[]
   }
-
 
   /**
    * Genre findFirstOrThrow
@@ -3915,7 +3882,7 @@ export namespace Prisma {
      */
     select?: GenreSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: GenreInclude<ExtArgs> | null
     /**
@@ -3954,7 +3921,6 @@ export namespace Prisma {
     distinct?: GenreScalarFieldEnum | GenreScalarFieldEnum[]
   }
 
-
   /**
    * Genre findMany
    */
@@ -3964,7 +3930,7 @@ export namespace Prisma {
      */
     select?: GenreSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: GenreInclude<ExtArgs> | null
     /**
@@ -3998,7 +3964,6 @@ export namespace Prisma {
     distinct?: GenreScalarFieldEnum | GenreScalarFieldEnum[]
   }
 
-
   /**
    * Genre create
    */
@@ -4008,7 +3973,7 @@ export namespace Prisma {
      */
     select?: GenreSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: GenreInclude<ExtArgs> | null
     /**
@@ -4016,7 +3981,6 @@ export namespace Prisma {
      */
     data: XOR<GenreCreateInput, GenreUncheckedCreateInput>
   }
-
 
   /**
    * Genre createMany
@@ -4029,7 +3993,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-
   /**
    * Genre update
    */
@@ -4039,7 +4002,7 @@ export namespace Prisma {
      */
     select?: GenreSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: GenreInclude<ExtArgs> | null
     /**
@@ -4051,7 +4014,6 @@ export namespace Prisma {
      */
     where: GenreWhereUniqueInput
   }
-
 
   /**
    * Genre updateMany
@@ -4067,7 +4029,6 @@ export namespace Prisma {
     where?: GenreWhereInput
   }
 
-
   /**
    * Genre upsert
    */
@@ -4077,7 +4038,7 @@ export namespace Prisma {
      */
     select?: GenreSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: GenreInclude<ExtArgs> | null
     /**
@@ -4094,7 +4055,6 @@ export namespace Prisma {
     update: XOR<GenreUpdateInput, GenreUncheckedUpdateInput>
   }
 
-
   /**
    * Genre delete
    */
@@ -4104,7 +4064,7 @@ export namespace Prisma {
      */
     select?: GenreSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: GenreInclude<ExtArgs> | null
     /**
@@ -4112,7 +4072,6 @@ export namespace Prisma {
      */
     where: GenreWhereUniqueInput
   }
-
 
   /**
    * Genre deleteMany
@@ -4124,7 +4083,6 @@ export namespace Prisma {
     where?: GenreWhereInput
   }
 
-
   /**
    * Genre.movies
    */
@@ -4134,7 +4092,7 @@ export namespace Prisma {
      */
     select?: MovieGenreSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: MovieGenreInclude<ExtArgs> | null
     where?: MovieGenreWhereInput
@@ -4145,7 +4103,6 @@ export namespace Prisma {
     distinct?: MovieGenreScalarFieldEnum | MovieGenreScalarFieldEnum[]
   }
 
-
   /**
    * Genre without action
    */
@@ -4155,11 +4112,10 @@ export namespace Prisma {
      */
     select?: GenreSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: GenreInclude<ExtArgs> | null
   }
-
 
 
   /**
@@ -4348,6 +4304,7 @@ export namespace Prisma {
     movieId?: boolean
     genreId?: boolean
   }
+
 
   export type MovieGenreInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     movie?: boolean | MoviesDefaultArgs<ExtArgs>
@@ -4767,7 +4724,6 @@ export namespace Prisma {
     
 
   // Custom InputTypes
-
   /**
    * MovieGenre findUnique
    */
@@ -4777,7 +4733,7 @@ export namespace Prisma {
      */
     select?: MovieGenreSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: MovieGenreInclude<ExtArgs> | null
     /**
@@ -4785,7 +4741,6 @@ export namespace Prisma {
      */
     where: MovieGenreWhereUniqueInput
   }
-
 
   /**
    * MovieGenre findUniqueOrThrow
@@ -4796,7 +4751,7 @@ export namespace Prisma {
      */
     select?: MovieGenreSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: MovieGenreInclude<ExtArgs> | null
     /**
@@ -4804,7 +4759,6 @@ export namespace Prisma {
      */
     where: MovieGenreWhereUniqueInput
   }
-
 
   /**
    * MovieGenre findFirst
@@ -4815,7 +4769,7 @@ export namespace Prisma {
      */
     select?: MovieGenreSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: MovieGenreInclude<ExtArgs> | null
     /**
@@ -4853,7 +4807,6 @@ export namespace Prisma {
      */
     distinct?: MovieGenreScalarFieldEnum | MovieGenreScalarFieldEnum[]
   }
-
 
   /**
    * MovieGenre findFirstOrThrow
@@ -4864,7 +4817,7 @@ export namespace Prisma {
      */
     select?: MovieGenreSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: MovieGenreInclude<ExtArgs> | null
     /**
@@ -4903,7 +4856,6 @@ export namespace Prisma {
     distinct?: MovieGenreScalarFieldEnum | MovieGenreScalarFieldEnum[]
   }
 
-
   /**
    * MovieGenre findMany
    */
@@ -4913,7 +4865,7 @@ export namespace Prisma {
      */
     select?: MovieGenreSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: MovieGenreInclude<ExtArgs> | null
     /**
@@ -4947,7 +4899,6 @@ export namespace Prisma {
     distinct?: MovieGenreScalarFieldEnum | MovieGenreScalarFieldEnum[]
   }
 
-
   /**
    * MovieGenre create
    */
@@ -4957,7 +4908,7 @@ export namespace Prisma {
      */
     select?: MovieGenreSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: MovieGenreInclude<ExtArgs> | null
     /**
@@ -4965,7 +4916,6 @@ export namespace Prisma {
      */
     data: XOR<MovieGenreCreateInput, MovieGenreUncheckedCreateInput>
   }
-
 
   /**
    * MovieGenre createMany
@@ -4978,7 +4928,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-
   /**
    * MovieGenre update
    */
@@ -4988,7 +4937,7 @@ export namespace Prisma {
      */
     select?: MovieGenreSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: MovieGenreInclude<ExtArgs> | null
     /**
@@ -5000,7 +4949,6 @@ export namespace Prisma {
      */
     where: MovieGenreWhereUniqueInput
   }
-
 
   /**
    * MovieGenre updateMany
@@ -5016,7 +4964,6 @@ export namespace Prisma {
     where?: MovieGenreWhereInput
   }
 
-
   /**
    * MovieGenre upsert
    */
@@ -5026,7 +4973,7 @@ export namespace Prisma {
      */
     select?: MovieGenreSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: MovieGenreInclude<ExtArgs> | null
     /**
@@ -5043,7 +4990,6 @@ export namespace Prisma {
     update: XOR<MovieGenreUpdateInput, MovieGenreUncheckedUpdateInput>
   }
 
-
   /**
    * MovieGenre delete
    */
@@ -5053,7 +4999,7 @@ export namespace Prisma {
      */
     select?: MovieGenreSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: MovieGenreInclude<ExtArgs> | null
     /**
@@ -5061,7 +5007,6 @@ export namespace Prisma {
      */
     where: MovieGenreWhereUniqueInput
   }
-
 
   /**
    * MovieGenre deleteMany
@@ -5073,7 +5018,6 @@ export namespace Prisma {
     where?: MovieGenreWhereInput
   }
 
-
   /**
    * MovieGenre without action
    */
@@ -5083,11 +5027,10 @@ export namespace Prisma {
      */
     select?: MovieGenreSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Choose, which related nodes to fetch as well
      */
     include?: MovieGenreInclude<ExtArgs> | null
   }
-
 
 
   /**

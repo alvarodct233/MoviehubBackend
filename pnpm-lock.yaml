@@ -44,8 +44,11 @@ devDependencies:
     specifier: ^5.11.0
     version: 5.13.0(pg@8.11.5)
   '@prisma/client':
-    specifier: ^5.12.1
+    specifier: ^5.13.0
     version: 5.13.0(prisma@5.13.0)
+  '@types/bcrypt':
+    specifier: ^5.0.2
+    version: 5.0.2
   '@types/express':
     specifier: ^4.17.21
     version: 4.17.21
@@ -236,6 +239,12 @@ packages:
 
   /@tsconfig/node16@1.0.4:
     resolution: {integrity: sha512-vxhUy4J8lyeyinH7Azl1pdd43GJhZH/tP2weN8TntQblOY+A0XbT8DJk1/oCPuOOyg/Ja757rG0CgHcWC8OfMA==}
+    dev: true
+
+  /@types/bcrypt@5.0.2:
+    resolution: {integrity: sha512-6atioO8Y75fNcbmj0G7UjI9lXN2pQ/IGJ2FWT4a/btd0Lk9lQalHLKhkgKVZ3r+spnmWUKfbMi1GEe9wyHQfNQ==}
+    dependencies:
+      '@types/node': 20.12.7
     dev: true
 
   /@types/body-parser@1.19.5:

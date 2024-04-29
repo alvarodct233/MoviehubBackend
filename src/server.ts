@@ -2,7 +2,7 @@ import express from 'express'
 import userRouter from './routes/user.routes';
 import movieRoutes from './routes/movie.routes';
 import genreRouter from './routes/genre.routes';
-import { checkJwtMiddlewares } from './db/middlewares/checkjwt.middlewares';
+import { checkJwtMiddlewares } from './middlewares/checkjwt.middlewares';
 import { requestRouter } from "./routes/requests.routes";
 
 

@@ -5,7 +5,7 @@ import {
 } from "../controllers/requests.controllers";
 
 
-import { checkJwtMiddlewares } from "../db/middlewares/checkjwt.middlewares";
+import { checkJwtMiddlewares } from "../middlewares/checkjwt.middlewares";
 
 console.log({ checkJwtMiddlewares }); 
 
