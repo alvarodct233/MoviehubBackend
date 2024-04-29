@@ -1,0 +1,48 @@
+generator client {
+    provider        = "prisma-client-js"
+    previewFeatures = ["driverAdapters"]
+    output          = "./generated/postgres_client"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("POSTGRESQL_URL")
+}
+
+model User {
+    id       Int      @id @default(autoincrement())
+    name     String   @db.VarChar(255)
+    email    String   @unique @db.VarChar(100)
+    password String   @db.VarChar(255)
+    createAt DateTime @default(now())
+    updateAt DateTime @updatedAt
+    movies   Movies[]
+}
+
+model Movies {
+    id       Int      @id @default(autoincrement())
+    name     String   @db.VarChar(255)
+    image    String   @db.VarChar(255)
+    createAt DateTime @default(now())
+    updateAt DateTime @updatedAt
+    userId   Int
+    user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+    genres   MovieGenre[]
+}
+
+model Genre {
+    id       Int      @id @default(autoincrement())
+    name     String   @db.VarChar(255)
+    createAt DateTime @default(now())
+    updateAt DateTime @updatedAt
+    movies   MovieGenre[]
+    }
+
+model MovieGenre {
+    movieId Int
+    genreId Int
+    movie   Movies @relation(fields: [movieId], references: [id])
+    genre   Genre  @relation(fields: [genreId], references: [id])
+
+    @@id([movieId, genreId])
+}
