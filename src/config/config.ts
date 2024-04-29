@@ -5,6 +5,7 @@ type TConfig = {
 }
 
 type EnvironmentConfig = {
+    cloudinary: CloudinaryConfig;
     app: AppConfig
     db: DbConfig
     auth0: Auth0Config,
@@ -23,6 +24,12 @@ type Auth0Config = {
     audience: string | undefined,
     issuer: string | undefined,
 }
+
+type CloudinaryConfig = {
+    cloudinary_cloud_name: string;
+    api_key: string;
+    api_secret: string;
+};
 
 if(process.env.NODE_ENV === "production"){
     dotenv.config({path: ".env.production"})
@@ -44,7 +51,12 @@ export const CONFIG: TConfig = {
             client_origin: process.env.CLIENT_ORIGIN,
             audience: process.env.AUTH0_AUDIENCE,
             issuer: process.env.AUTH0_ISSUER
-        }
+        },
+        cloudinary: {
+            cloudinary_cloud_name: process.env.CLOUDINARY_CLOUD_NAME || "error",
+            api_key: process.env.CLOUDINARY_API_KEY || "error",
+            api_secret: process.env.CLOUDINARY_API_SECRET || "error",
+        },
     },
     production: {
         app: {
@@ -57,7 +69,12 @@ export const CONFIG: TConfig = {
             client_origin: process.env.CLIENT_ORIGIN,
             audience: process.env.AUTH0_AUDIENCE,
             issuer: process.env.AUTH0_ISSUER
-        }
+        },
+        cloudinary: {
+            cloudinary_cloud_name: process.env.CLOUDINARY_CLOUD_NAME || "error",
+            api_key: process.env.CLOUDINARY_API_KEY || "error",
+            api_secret: process.env.CLOUDINARY_API_SECRET || "error",
+        },
     }   
 }
 
