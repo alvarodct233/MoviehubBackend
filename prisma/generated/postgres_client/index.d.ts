@@ -33,6 +33,16 @@ export type Genre = $Result.DefaultSelection<Prisma.$GenrePayload>
  * 
  */
 export type MovieGenre = $Result.DefaultSelection<Prisma.$MovieGenrePayload>
+/**
+ * Model LikeMovies
+ * 
+ */
+export type LikeMovies = $Result.DefaultSelection<Prisma.$LikeMoviesPayload>
+/**
+ * Model Actors
+ * 
+ */
+export type Actors = $Result.DefaultSelection<Prisma.$ActorsPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -195,6 +205,26 @@ export class PrismaClient<
     * ```
     */
   get movieGenre(): Prisma.MovieGenreDelegate<ExtArgs>;
+
+  /**
+   * `prisma.likeMovies`: Exposes CRUD operations for the **LikeMovies** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more LikeMovies
+    * const likeMovies = await prisma.likeMovies.findMany()
+    * ```
+    */
+  get likeMovies(): Prisma.LikeMoviesDelegate<ExtArgs>;
+
+  /**
+   * `prisma.actors`: Exposes CRUD operations for the **Actors** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Actors
+    * const actors = await prisma.actors.findMany()
+    * ```
+    */
+  get actors(): Prisma.ActorsDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -675,7 +705,9 @@ export namespace Prisma {
     User: 'User',
     Movies: 'Movies',
     Genre: 'Genre',
-    MovieGenre: 'MovieGenre'
+    MovieGenre: 'MovieGenre',
+    LikeMovies: 'LikeMovies',
+    Actors: 'Actors'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -692,7 +724,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'user' | 'movies' | 'genre' | 'movieGenre'
+      modelProps: 'user' | 'movies' | 'genre' | 'movieGenre' | 'likeMovies' | 'actors'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -960,6 +992,138 @@ export namespace Prisma {
           }
         }
       }
+      LikeMovies: {
+        payload: Prisma.$LikeMoviesPayload<ExtArgs>
+        fields: Prisma.LikeMoviesFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.LikeMoviesFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$LikeMoviesPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.LikeMoviesFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$LikeMoviesPayload>
+          }
+          findFirst: {
+            args: Prisma.LikeMoviesFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$LikeMoviesPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.LikeMoviesFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$LikeMoviesPayload>
+          }
+          findMany: {
+            args: Prisma.LikeMoviesFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$LikeMoviesPayload>[]
+          }
+          create: {
+            args: Prisma.LikeMoviesCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$LikeMoviesPayload>
+          }
+          createMany: {
+            args: Prisma.LikeMoviesCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          delete: {
+            args: Prisma.LikeMoviesDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$LikeMoviesPayload>
+          }
+          update: {
+            args: Prisma.LikeMoviesUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$LikeMoviesPayload>
+          }
+          deleteMany: {
+            args: Prisma.LikeMoviesDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.LikeMoviesUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.LikeMoviesUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$LikeMoviesPayload>
+          }
+          aggregate: {
+            args: Prisma.LikeMoviesAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateLikeMovies>
+          }
+          groupBy: {
+            args: Prisma.LikeMoviesGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<LikeMoviesGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.LikeMoviesCountArgs<ExtArgs>,
+            result: $Utils.Optional<LikeMoviesCountAggregateOutputType> | number
+          }
+        }
+      }
+      Actors: {
+        payload: Prisma.$ActorsPayload<ExtArgs>
+        fields: Prisma.ActorsFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ActorsFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ActorsPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ActorsFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ActorsPayload>
+          }
+          findFirst: {
+            args: Prisma.ActorsFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ActorsPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ActorsFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ActorsPayload>
+          }
+          findMany: {
+            args: Prisma.ActorsFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ActorsPayload>[]
+          }
+          create: {
+            args: Prisma.ActorsCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ActorsPayload>
+          }
+          createMany: {
+            args: Prisma.ActorsCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          delete: {
+            args: Prisma.ActorsDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ActorsPayload>
+          }
+          update: {
+            args: Prisma.ActorsUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ActorsPayload>
+          }
+          deleteMany: {
+            args: Prisma.ActorsDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ActorsUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.ActorsUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ActorsPayload>
+          }
+          aggregate: {
+            args: Prisma.ActorsAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateActors>
+          }
+          groupBy: {
+            args: Prisma.ActorsGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<ActorsGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ActorsCountArgs<ExtArgs>,
+            result: $Utils.Optional<ActorsCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1124,10 +1288,12 @@ export namespace Prisma {
 
   export type UserCountOutputType = {
     movies: number
+    likedBy: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     movies?: boolean | UserCountOutputTypeCountMoviesArgs
+    likedBy?: boolean | UserCountOutputTypeCountLikedByArgs
   }
 
   // Custom InputTypes
@@ -1148,6 +1314,13 @@ export namespace Prisma {
     where?: MoviesWhereInput
   }
 
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountLikedByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: LikeMoviesWhereInput
+  }
+
 
   /**
    * Count Type MoviesCountOutputType
@@ -1155,10 +1328,14 @@ export namespace Prisma {
 
   export type MoviesCountOutputType = {
     genres: number
+    actors: number
+    likedBy: number
   }
 
   export type MoviesCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     genres?: boolean | MoviesCountOutputTypeCountGenresArgs
+    actors?: boolean | MoviesCountOutputTypeCountActorsArgs
+    likedBy?: boolean | MoviesCountOutputTypeCountLikedByArgs
   }
 
   // Custom InputTypes
@@ -1177,6 +1354,20 @@ export namespace Prisma {
    */
   export type MoviesCountOutputTypeCountGenresArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: MovieGenreWhereInput
+  }
+
+  /**
+   * MoviesCountOutputType without action
+   */
+  export type MoviesCountOutputTypeCountActorsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ActorsWhereInput
+  }
+
+  /**
+   * MoviesCountOutputType without action
+   */
+  export type MoviesCountOutputTypeCountLikedByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: LikeMoviesWhereInput
   }
 
 
@@ -1208,6 +1399,37 @@ export namespace Prisma {
    */
   export type GenreCountOutputTypeCountMoviesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: MovieGenreWhereInput
+  }
+
+
+  /**
+   * Count Type ActorsCountOutputType
+   */
+
+  export type ActorsCountOutputType = {
+    movies: number
+  }
+
+  export type ActorsCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    movies?: boolean | ActorsCountOutputTypeCountMoviesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ActorsCountOutputType without action
+   */
+  export type ActorsCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ActorsCountOutputType
+     */
+    select?: ActorsCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ActorsCountOutputType without action
+   */
+  export type ActorsCountOutputTypeCountMoviesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MoviesWhereInput
   }
 
 
@@ -1422,6 +1644,7 @@ export namespace Prisma {
     createAt?: boolean
     updateAt?: boolean
     movies?: boolean | User$moviesArgs<ExtArgs>
+    likedBy?: boolean | User$likedByArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -1437,6 +1660,7 @@ export namespace Prisma {
 
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     movies?: boolean | User$moviesArgs<ExtArgs>
+    likedBy?: boolean | User$likedByArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -1445,6 +1669,7 @@ export namespace Prisma {
     name: "User"
     objects: {
       movies: Prisma.$MoviesPayload<ExtArgs>[]
+      likedBy: Prisma.$LikeMoviesPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -1820,6 +2045,8 @@ export namespace Prisma {
 
     movies<T extends User$moviesArgs<ExtArgs> = {}>(args?: Subset<T, User$moviesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MoviesPayload<ExtArgs>, T, 'findMany'> | Null>;
 
+    likedBy<T extends User$likedByArgs<ExtArgs> = {}>(args?: Subset<T, User$likedByArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LikeMoviesPayload<ExtArgs>, T, 'findMany'> | Null>;
+
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2173,6 +2400,26 @@ export namespace Prisma {
   }
 
   /**
+   * User.likedBy
+   */
+  export type User$likedByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LikeMovies
+     */
+    select?: LikeMoviesSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LikeMoviesInclude<ExtArgs> | null
+    where?: LikeMoviesWhereInput
+    orderBy?: LikeMoviesOrderByWithRelationInput | LikeMoviesOrderByWithRelationInput[]
+    cursor?: LikeMoviesWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: LikeMoviesScalarFieldEnum | LikeMoviesScalarFieldEnum[]
+  }
+
+  /**
    * User without action
    */
   export type UserDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2213,6 +2460,7 @@ export namespace Prisma {
     id: number | null
     name: string | null
     image: string | null
+    sinopsis: string | null
     createAt: Date | null
     updateAt: Date | null
     userId: number | null
@@ -2222,6 +2470,7 @@ export namespace Prisma {
     id: number | null
     name: string | null
     image: string | null
+    sinopsis: string | null
     createAt: Date | null
     updateAt: Date | null
     userId: number | null
@@ -2231,6 +2480,7 @@ export namespace Prisma {
     id: number
     name: number
     image: number
+    sinopsis: number
     createAt: number
     updateAt: number
     userId: number
@@ -2252,6 +2502,7 @@ export namespace Prisma {
     id?: true
     name?: true
     image?: true
+    sinopsis?: true
     createAt?: true
     updateAt?: true
     userId?: true
@@ -2261,6 +2512,7 @@ export namespace Prisma {
     id?: true
     name?: true
     image?: true
+    sinopsis?: true
     createAt?: true
     updateAt?: true
     userId?: true
@@ -2270,6 +2522,7 @@ export namespace Prisma {
     id?: true
     name?: true
     image?: true
+    sinopsis?: true
     createAt?: true
     updateAt?: true
     userId?: true
@@ -2366,6 +2619,7 @@ export namespace Prisma {
     id: number
     name: string
     image: string
+    sinopsis: string
     createAt: Date
     updateAt: Date
     userId: number
@@ -2394,11 +2648,14 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     image?: boolean
+    sinopsis?: boolean
     createAt?: boolean
     updateAt?: boolean
     userId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     genres?: boolean | Movies$genresArgs<ExtArgs>
+    actors?: boolean | Movies$actorsArgs<ExtArgs>
+    likedBy?: boolean | Movies$likedByArgs<ExtArgs>
     _count?: boolean | MoviesCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["movies"]>
 
@@ -2406,6 +2663,7 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     image?: boolean
+    sinopsis?: boolean
     createAt?: boolean
     updateAt?: boolean
     userId?: boolean
@@ -2415,6 +2673,8 @@ export namespace Prisma {
   export type MoviesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     genres?: boolean | Movies$genresArgs<ExtArgs>
+    actors?: boolean | Movies$actorsArgs<ExtArgs>
+    likedBy?: boolean | Movies$likedByArgs<ExtArgs>
     _count?: boolean | MoviesCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -2424,11 +2684,14 @@ export namespace Prisma {
     objects: {
       user: Prisma.$UserPayload<ExtArgs>
       genres: Prisma.$MovieGenrePayload<ExtArgs>[]
+      actors: Prisma.$ActorsPayload<ExtArgs>[]
+      likedBy: Prisma.$LikeMoviesPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string
       image: string
+      sinopsis: string
       createAt: Date
       updateAt: Date
       userId: number
@@ -2801,6 +3064,10 @@ export namespace Prisma {
 
     genres<T extends Movies$genresArgs<ExtArgs> = {}>(args?: Subset<T, Movies$genresArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MovieGenrePayload<ExtArgs>, T, 'findMany'> | Null>;
 
+    actors<T extends Movies$actorsArgs<ExtArgs> = {}>(args?: Subset<T, Movies$actorsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ActorsPayload<ExtArgs>, T, 'findMany'> | Null>;
+
+    likedBy<T extends Movies$likedByArgs<ExtArgs> = {}>(args?: Subset<T, Movies$likedByArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LikeMoviesPayload<ExtArgs>, T, 'findMany'> | Null>;
+
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2832,6 +3099,7 @@ export namespace Prisma {
     readonly id: FieldRef<"Movies", 'Int'>
     readonly name: FieldRef<"Movies", 'String'>
     readonly image: FieldRef<"Movies", 'String'>
+    readonly sinopsis: FieldRef<"Movies", 'String'>
     readonly createAt: FieldRef<"Movies", 'DateTime'>
     readonly updateAt: FieldRef<"Movies", 'DateTime'>
     readonly userId: FieldRef<"Movies", 'Int'>
@@ -3151,6 +3419,46 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: MovieGenreScalarFieldEnum | MovieGenreScalarFieldEnum[]
+  }
+
+  /**
+   * Movies.actors
+   */
+  export type Movies$actorsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Actors
+     */
+    select?: ActorsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ActorsInclude<ExtArgs> | null
+    where?: ActorsWhereInput
+    orderBy?: ActorsOrderByWithRelationInput | ActorsOrderByWithRelationInput[]
+    cursor?: ActorsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ActorsScalarFieldEnum | ActorsScalarFieldEnum[]
+  }
+
+  /**
+   * Movies.likedBy
+   */
+  export type Movies$likedByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LikeMovies
+     */
+    select?: LikeMoviesSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LikeMoviesInclude<ExtArgs> | null
+    where?: LikeMoviesWhereInput
+    orderBy?: LikeMoviesOrderByWithRelationInput | LikeMoviesOrderByWithRelationInput[]
+    cursor?: LikeMoviesWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: LikeMoviesScalarFieldEnum | LikeMoviesScalarFieldEnum[]
   }
 
   /**
@@ -5034,6 +5342,1905 @@ export namespace Prisma {
 
 
   /**
+   * Model LikeMovies
+   */
+
+  export type AggregateLikeMovies = {
+    _count: LikeMoviesCountAggregateOutputType | null
+    _avg: LikeMoviesAvgAggregateOutputType | null
+    _sum: LikeMoviesSumAggregateOutputType | null
+    _min: LikeMoviesMinAggregateOutputType | null
+    _max: LikeMoviesMaxAggregateOutputType | null
+  }
+
+  export type LikeMoviesAvgAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    moviesId: number | null
+  }
+
+  export type LikeMoviesSumAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    moviesId: number | null
+  }
+
+  export type LikeMoviesMinAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    moviesId: number | null
+  }
+
+  export type LikeMoviesMaxAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    moviesId: number | null
+  }
+
+  export type LikeMoviesCountAggregateOutputType = {
+    id: number
+    userId: number
+    moviesId: number
+    _all: number
+  }
+
+
+  export type LikeMoviesAvgAggregateInputType = {
+    id?: true
+    userId?: true
+    moviesId?: true
+  }
+
+  export type LikeMoviesSumAggregateInputType = {
+    id?: true
+    userId?: true
+    moviesId?: true
+  }
+
+  export type LikeMoviesMinAggregateInputType = {
+    id?: true
+    userId?: true
+    moviesId?: true
+  }
+
+  export type LikeMoviesMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    moviesId?: true
+  }
+
+  export type LikeMoviesCountAggregateInputType = {
+    id?: true
+    userId?: true
+    moviesId?: true
+    _all?: true
+  }
+
+  export type LikeMoviesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which LikeMovies to aggregate.
+     */
+    where?: LikeMoviesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of LikeMovies to fetch.
+     */
+    orderBy?: LikeMoviesOrderByWithRelationInput | LikeMoviesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: LikeMoviesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` LikeMovies from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` LikeMovies.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned LikeMovies
+    **/
+    _count?: true | LikeMoviesCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: LikeMoviesAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: LikeMoviesSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: LikeMoviesMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: LikeMoviesMaxAggregateInputType
+  }
+
+  export type GetLikeMoviesAggregateType<T extends LikeMoviesAggregateArgs> = {
+        [P in keyof T & keyof AggregateLikeMovies]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateLikeMovies[P]>
+      : GetScalarType<T[P], AggregateLikeMovies[P]>
+  }
+
+
+
+
+  export type LikeMoviesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: LikeMoviesWhereInput
+    orderBy?: LikeMoviesOrderByWithAggregationInput | LikeMoviesOrderByWithAggregationInput[]
+    by: LikeMoviesScalarFieldEnum[] | LikeMoviesScalarFieldEnum
+    having?: LikeMoviesScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: LikeMoviesCountAggregateInputType | true
+    _avg?: LikeMoviesAvgAggregateInputType
+    _sum?: LikeMoviesSumAggregateInputType
+    _min?: LikeMoviesMinAggregateInputType
+    _max?: LikeMoviesMaxAggregateInputType
+  }
+
+  export type LikeMoviesGroupByOutputType = {
+    id: number
+    userId: number
+    moviesId: number | null
+    _count: LikeMoviesCountAggregateOutputType | null
+    _avg: LikeMoviesAvgAggregateOutputType | null
+    _sum: LikeMoviesSumAggregateOutputType | null
+    _min: LikeMoviesMinAggregateOutputType | null
+    _max: LikeMoviesMaxAggregateOutputType | null
+  }
+
+  type GetLikeMoviesGroupByPayload<T extends LikeMoviesGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<LikeMoviesGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof LikeMoviesGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], LikeMoviesGroupByOutputType[P]>
+            : GetScalarType<T[P], LikeMoviesGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type LikeMoviesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    moviesId?: boolean
+    user?: boolean | LikeMovies$userArgs<ExtArgs>
+    movie?: boolean | LikeMovies$movieArgs<ExtArgs>
+  }, ExtArgs["result"]["likeMovies"]>
+
+  export type LikeMoviesSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    moviesId?: boolean
+  }
+
+
+  export type LikeMoviesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | LikeMovies$userArgs<ExtArgs>
+    movie?: boolean | LikeMovies$movieArgs<ExtArgs>
+  }
+
+
+  export type $LikeMoviesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "LikeMovies"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs> | null
+      movie: Prisma.$MoviesPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      userId: number
+      moviesId: number | null
+    }, ExtArgs["result"]["likeMovies"]>
+    composites: {}
+  }
+
+
+  type LikeMoviesGetPayload<S extends boolean | null | undefined | LikeMoviesDefaultArgs> = $Result.GetResult<Prisma.$LikeMoviesPayload, S>
+
+  type LikeMoviesCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<LikeMoviesFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: LikeMoviesCountAggregateInputType | true
+    }
+
+  export interface LikeMoviesDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['LikeMovies'], meta: { name: 'LikeMovies' } }
+    /**
+     * Find zero or one LikeMovies that matches the filter.
+     * @param {LikeMoviesFindUniqueArgs} args - Arguments to find a LikeMovies
+     * @example
+     * // Get one LikeMovies
+     * const likeMovies = await prisma.likeMovies.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends LikeMoviesFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, LikeMoviesFindUniqueArgs<ExtArgs>>
+    ): Prisma__LikeMoviesClient<$Result.GetResult<Prisma.$LikeMoviesPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one LikeMovies that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {LikeMoviesFindUniqueOrThrowArgs} args - Arguments to find a LikeMovies
+     * @example
+     * // Get one LikeMovies
+     * const likeMovies = await prisma.likeMovies.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends LikeMoviesFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, LikeMoviesFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__LikeMoviesClient<$Result.GetResult<Prisma.$LikeMoviesPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first LikeMovies that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LikeMoviesFindFirstArgs} args - Arguments to find a LikeMovies
+     * @example
+     * // Get one LikeMovies
+     * const likeMovies = await prisma.likeMovies.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends LikeMoviesFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, LikeMoviesFindFirstArgs<ExtArgs>>
+    ): Prisma__LikeMoviesClient<$Result.GetResult<Prisma.$LikeMoviesPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first LikeMovies that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LikeMoviesFindFirstOrThrowArgs} args - Arguments to find a LikeMovies
+     * @example
+     * // Get one LikeMovies
+     * const likeMovies = await prisma.likeMovies.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends LikeMoviesFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, LikeMoviesFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__LikeMoviesClient<$Result.GetResult<Prisma.$LikeMoviesPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more LikeMovies that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LikeMoviesFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all LikeMovies
+     * const likeMovies = await prisma.likeMovies.findMany()
+     * 
+     * // Get first 10 LikeMovies
+     * const likeMovies = await prisma.likeMovies.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const likeMoviesWithIdOnly = await prisma.likeMovies.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends LikeMoviesFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, LikeMoviesFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LikeMoviesPayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a LikeMovies.
+     * @param {LikeMoviesCreateArgs} args - Arguments to create a LikeMovies.
+     * @example
+     * // Create one LikeMovies
+     * const LikeMovies = await prisma.likeMovies.create({
+     *   data: {
+     *     // ... data to create a LikeMovies
+     *   }
+     * })
+     * 
+    **/
+    create<T extends LikeMoviesCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, LikeMoviesCreateArgs<ExtArgs>>
+    ): Prisma__LikeMoviesClient<$Result.GetResult<Prisma.$LikeMoviesPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many LikeMovies.
+     *     @param {LikeMoviesCreateManyArgs} args - Arguments to create many LikeMovies.
+     *     @example
+     *     // Create many LikeMovies
+     *     const likeMovies = await prisma.likeMovies.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends LikeMoviesCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, LikeMoviesCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a LikeMovies.
+     * @param {LikeMoviesDeleteArgs} args - Arguments to delete one LikeMovies.
+     * @example
+     * // Delete one LikeMovies
+     * const LikeMovies = await prisma.likeMovies.delete({
+     *   where: {
+     *     // ... filter to delete one LikeMovies
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends LikeMoviesDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, LikeMoviesDeleteArgs<ExtArgs>>
+    ): Prisma__LikeMoviesClient<$Result.GetResult<Prisma.$LikeMoviesPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one LikeMovies.
+     * @param {LikeMoviesUpdateArgs} args - Arguments to update one LikeMovies.
+     * @example
+     * // Update one LikeMovies
+     * const likeMovies = await prisma.likeMovies.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends LikeMoviesUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, LikeMoviesUpdateArgs<ExtArgs>>
+    ): Prisma__LikeMoviesClient<$Result.GetResult<Prisma.$LikeMoviesPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more LikeMovies.
+     * @param {LikeMoviesDeleteManyArgs} args - Arguments to filter LikeMovies to delete.
+     * @example
+     * // Delete a few LikeMovies
+     * const { count } = await prisma.likeMovies.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends LikeMoviesDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, LikeMoviesDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more LikeMovies.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LikeMoviesUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many LikeMovies
+     * const likeMovies = await prisma.likeMovies.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends LikeMoviesUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, LikeMoviesUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one LikeMovies.
+     * @param {LikeMoviesUpsertArgs} args - Arguments to update or create a LikeMovies.
+     * @example
+     * // Update or create a LikeMovies
+     * const likeMovies = await prisma.likeMovies.upsert({
+     *   create: {
+     *     // ... data to create a LikeMovies
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the LikeMovies we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends LikeMoviesUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, LikeMoviesUpsertArgs<ExtArgs>>
+    ): Prisma__LikeMoviesClient<$Result.GetResult<Prisma.$LikeMoviesPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of LikeMovies.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LikeMoviesCountArgs} args - Arguments to filter LikeMovies to count.
+     * @example
+     * // Count the number of LikeMovies
+     * const count = await prisma.likeMovies.count({
+     *   where: {
+     *     // ... the filter for the LikeMovies we want to count
+     *   }
+     * })
+    **/
+    count<T extends LikeMoviesCountArgs>(
+      args?: Subset<T, LikeMoviesCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], LikeMoviesCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a LikeMovies.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LikeMoviesAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends LikeMoviesAggregateArgs>(args: Subset<T, LikeMoviesAggregateArgs>): Prisma.PrismaPromise<GetLikeMoviesAggregateType<T>>
+
+    /**
+     * Group by LikeMovies.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LikeMoviesGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends LikeMoviesGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: LikeMoviesGroupByArgs['orderBy'] }
+        : { orderBy?: LikeMoviesGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, LikeMoviesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetLikeMoviesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the LikeMovies model
+   */
+  readonly fields: LikeMoviesFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for LikeMovies.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__LikeMoviesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+    user<T extends LikeMovies$userArgs<ExtArgs> = {}>(args?: Subset<T, LikeMovies$userArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
+
+    movie<T extends LikeMovies$movieArgs<ExtArgs> = {}>(args?: Subset<T, LikeMovies$movieArgs<ExtArgs>>): Prisma__MoviesClient<$Result.GetResult<Prisma.$MoviesPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the LikeMovies model
+   */ 
+  interface LikeMoviesFieldRefs {
+    readonly id: FieldRef<"LikeMovies", 'Int'>
+    readonly userId: FieldRef<"LikeMovies", 'Int'>
+    readonly moviesId: FieldRef<"LikeMovies", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * LikeMovies findUnique
+   */
+  export type LikeMoviesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LikeMovies
+     */
+    select?: LikeMoviesSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LikeMoviesInclude<ExtArgs> | null
+    /**
+     * Filter, which LikeMovies to fetch.
+     */
+    where: LikeMoviesWhereUniqueInput
+  }
+
+  /**
+   * LikeMovies findUniqueOrThrow
+   */
+  export type LikeMoviesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LikeMovies
+     */
+    select?: LikeMoviesSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LikeMoviesInclude<ExtArgs> | null
+    /**
+     * Filter, which LikeMovies to fetch.
+     */
+    where: LikeMoviesWhereUniqueInput
+  }
+
+  /**
+   * LikeMovies findFirst
+   */
+  export type LikeMoviesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LikeMovies
+     */
+    select?: LikeMoviesSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LikeMoviesInclude<ExtArgs> | null
+    /**
+     * Filter, which LikeMovies to fetch.
+     */
+    where?: LikeMoviesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of LikeMovies to fetch.
+     */
+    orderBy?: LikeMoviesOrderByWithRelationInput | LikeMoviesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for LikeMovies.
+     */
+    cursor?: LikeMoviesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` LikeMovies from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` LikeMovies.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of LikeMovies.
+     */
+    distinct?: LikeMoviesScalarFieldEnum | LikeMoviesScalarFieldEnum[]
+  }
+
+  /**
+   * LikeMovies findFirstOrThrow
+   */
+  export type LikeMoviesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LikeMovies
+     */
+    select?: LikeMoviesSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LikeMoviesInclude<ExtArgs> | null
+    /**
+     * Filter, which LikeMovies to fetch.
+     */
+    where?: LikeMoviesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of LikeMovies to fetch.
+     */
+    orderBy?: LikeMoviesOrderByWithRelationInput | LikeMoviesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for LikeMovies.
+     */
+    cursor?: LikeMoviesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` LikeMovies from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` LikeMovies.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of LikeMovies.
+     */
+    distinct?: LikeMoviesScalarFieldEnum | LikeMoviesScalarFieldEnum[]
+  }
+
+  /**
+   * LikeMovies findMany
+   */
+  export type LikeMoviesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LikeMovies
+     */
+    select?: LikeMoviesSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LikeMoviesInclude<ExtArgs> | null
+    /**
+     * Filter, which LikeMovies to fetch.
+     */
+    where?: LikeMoviesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of LikeMovies to fetch.
+     */
+    orderBy?: LikeMoviesOrderByWithRelationInput | LikeMoviesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing LikeMovies.
+     */
+    cursor?: LikeMoviesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` LikeMovies from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` LikeMovies.
+     */
+    skip?: number
+    distinct?: LikeMoviesScalarFieldEnum | LikeMoviesScalarFieldEnum[]
+  }
+
+  /**
+   * LikeMovies create
+   */
+  export type LikeMoviesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LikeMovies
+     */
+    select?: LikeMoviesSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LikeMoviesInclude<ExtArgs> | null
+    /**
+     * The data needed to create a LikeMovies.
+     */
+    data: XOR<LikeMoviesCreateInput, LikeMoviesUncheckedCreateInput>
+  }
+
+  /**
+   * LikeMovies createMany
+   */
+  export type LikeMoviesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many LikeMovies.
+     */
+    data: LikeMoviesCreateManyInput | LikeMoviesCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * LikeMovies update
+   */
+  export type LikeMoviesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LikeMovies
+     */
+    select?: LikeMoviesSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LikeMoviesInclude<ExtArgs> | null
+    /**
+     * The data needed to update a LikeMovies.
+     */
+    data: XOR<LikeMoviesUpdateInput, LikeMoviesUncheckedUpdateInput>
+    /**
+     * Choose, which LikeMovies to update.
+     */
+    where: LikeMoviesWhereUniqueInput
+  }
+
+  /**
+   * LikeMovies updateMany
+   */
+  export type LikeMoviesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update LikeMovies.
+     */
+    data: XOR<LikeMoviesUpdateManyMutationInput, LikeMoviesUncheckedUpdateManyInput>
+    /**
+     * Filter which LikeMovies to update
+     */
+    where?: LikeMoviesWhereInput
+  }
+
+  /**
+   * LikeMovies upsert
+   */
+  export type LikeMoviesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LikeMovies
+     */
+    select?: LikeMoviesSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LikeMoviesInclude<ExtArgs> | null
+    /**
+     * The filter to search for the LikeMovies to update in case it exists.
+     */
+    where: LikeMoviesWhereUniqueInput
+    /**
+     * In case the LikeMovies found by the `where` argument doesn't exist, create a new LikeMovies with this data.
+     */
+    create: XOR<LikeMoviesCreateInput, LikeMoviesUncheckedCreateInput>
+    /**
+     * In case the LikeMovies was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<LikeMoviesUpdateInput, LikeMoviesUncheckedUpdateInput>
+  }
+
+  /**
+   * LikeMovies delete
+   */
+  export type LikeMoviesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LikeMovies
+     */
+    select?: LikeMoviesSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LikeMoviesInclude<ExtArgs> | null
+    /**
+     * Filter which LikeMovies to delete.
+     */
+    where: LikeMoviesWhereUniqueInput
+  }
+
+  /**
+   * LikeMovies deleteMany
+   */
+  export type LikeMoviesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which LikeMovies to delete
+     */
+    where?: LikeMoviesWhereInput
+  }
+
+  /**
+   * LikeMovies.user
+   */
+  export type LikeMovies$userArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
+  }
+
+  /**
+   * LikeMovies.movie
+   */
+  export type LikeMovies$movieArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Movies
+     */
+    select?: MoviesSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MoviesInclude<ExtArgs> | null
+    where?: MoviesWhereInput
+  }
+
+  /**
+   * LikeMovies without action
+   */
+  export type LikeMoviesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LikeMovies
+     */
+    select?: LikeMoviesSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LikeMoviesInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Actors
+   */
+
+  export type AggregateActors = {
+    _count: ActorsCountAggregateOutputType | null
+    _avg: ActorsAvgAggregateOutputType | null
+    _sum: ActorsSumAggregateOutputType | null
+    _min: ActorsMinAggregateOutputType | null
+    _max: ActorsMaxAggregateOutputType | null
+  }
+
+  export type ActorsAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type ActorsSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type ActorsMinAggregateOutputType = {
+    id: number | null
+    name: string | null
+    image: string | null
+  }
+
+  export type ActorsMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+    image: string | null
+  }
+
+  export type ActorsCountAggregateOutputType = {
+    id: number
+    name: number
+    image: number
+    _all: number
+  }
+
+
+  export type ActorsAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type ActorsSumAggregateInputType = {
+    id?: true
+  }
+
+  export type ActorsMinAggregateInputType = {
+    id?: true
+    name?: true
+    image?: true
+  }
+
+  export type ActorsMaxAggregateInputType = {
+    id?: true
+    name?: true
+    image?: true
+  }
+
+  export type ActorsCountAggregateInputType = {
+    id?: true
+    name?: true
+    image?: true
+    _all?: true
+  }
+
+  export type ActorsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Actors to aggregate.
+     */
+    where?: ActorsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Actors to fetch.
+     */
+    orderBy?: ActorsOrderByWithRelationInput | ActorsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ActorsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Actors from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Actors.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Actors
+    **/
+    _count?: true | ActorsCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ActorsAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ActorsSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ActorsMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ActorsMaxAggregateInputType
+  }
+
+  export type GetActorsAggregateType<T extends ActorsAggregateArgs> = {
+        [P in keyof T & keyof AggregateActors]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateActors[P]>
+      : GetScalarType<T[P], AggregateActors[P]>
+  }
+
+
+
+
+  export type ActorsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ActorsWhereInput
+    orderBy?: ActorsOrderByWithAggregationInput | ActorsOrderByWithAggregationInput[]
+    by: ActorsScalarFieldEnum[] | ActorsScalarFieldEnum
+    having?: ActorsScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ActorsCountAggregateInputType | true
+    _avg?: ActorsAvgAggregateInputType
+    _sum?: ActorsSumAggregateInputType
+    _min?: ActorsMinAggregateInputType
+    _max?: ActorsMaxAggregateInputType
+  }
+
+  export type ActorsGroupByOutputType = {
+    id: number
+    name: string
+    image: string
+    _count: ActorsCountAggregateOutputType | null
+    _avg: ActorsAvgAggregateOutputType | null
+    _sum: ActorsSumAggregateOutputType | null
+    _min: ActorsMinAggregateOutputType | null
+    _max: ActorsMaxAggregateOutputType | null
+  }
+
+  type GetActorsGroupByPayload<T extends ActorsGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ActorsGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ActorsGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ActorsGroupByOutputType[P]>
+            : GetScalarType<T[P], ActorsGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ActorsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    image?: boolean
+    movies?: boolean | Actors$moviesArgs<ExtArgs>
+    _count?: boolean | ActorsCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["actors"]>
+
+  export type ActorsSelectScalar = {
+    id?: boolean
+    name?: boolean
+    image?: boolean
+  }
+
+
+  export type ActorsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    movies?: boolean | Actors$moviesArgs<ExtArgs>
+    _count?: boolean | ActorsCountOutputTypeDefaultArgs<ExtArgs>
+  }
+
+
+  export type $ActorsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Actors"
+    objects: {
+      movies: Prisma.$MoviesPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      name: string
+      image: string
+    }, ExtArgs["result"]["actors"]>
+    composites: {}
+  }
+
+
+  type ActorsGetPayload<S extends boolean | null | undefined | ActorsDefaultArgs> = $Result.GetResult<Prisma.$ActorsPayload, S>
+
+  type ActorsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<ActorsFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: ActorsCountAggregateInputType | true
+    }
+
+  export interface ActorsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Actors'], meta: { name: 'Actors' } }
+    /**
+     * Find zero or one Actors that matches the filter.
+     * @param {ActorsFindUniqueArgs} args - Arguments to find a Actors
+     * @example
+     * // Get one Actors
+     * const actors = await prisma.actors.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends ActorsFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, ActorsFindUniqueArgs<ExtArgs>>
+    ): Prisma__ActorsClient<$Result.GetResult<Prisma.$ActorsPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one Actors that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {ActorsFindUniqueOrThrowArgs} args - Arguments to find a Actors
+     * @example
+     * // Get one Actors
+     * const actors = await prisma.actors.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends ActorsFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, ActorsFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__ActorsClient<$Result.GetResult<Prisma.$ActorsPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first Actors that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ActorsFindFirstArgs} args - Arguments to find a Actors
+     * @example
+     * // Get one Actors
+     * const actors = await prisma.actors.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends ActorsFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, ActorsFindFirstArgs<ExtArgs>>
+    ): Prisma__ActorsClient<$Result.GetResult<Prisma.$ActorsPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first Actors that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ActorsFindFirstOrThrowArgs} args - Arguments to find a Actors
+     * @example
+     * // Get one Actors
+     * const actors = await prisma.actors.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends ActorsFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, ActorsFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__ActorsClient<$Result.GetResult<Prisma.$ActorsPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more Actors that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ActorsFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Actors
+     * const actors = await prisma.actors.findMany()
+     * 
+     * // Get first 10 Actors
+     * const actors = await prisma.actors.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const actorsWithIdOnly = await prisma.actors.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends ActorsFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, ActorsFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ActorsPayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a Actors.
+     * @param {ActorsCreateArgs} args - Arguments to create a Actors.
+     * @example
+     * // Create one Actors
+     * const Actors = await prisma.actors.create({
+     *   data: {
+     *     // ... data to create a Actors
+     *   }
+     * })
+     * 
+    **/
+    create<T extends ActorsCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, ActorsCreateArgs<ExtArgs>>
+    ): Prisma__ActorsClient<$Result.GetResult<Prisma.$ActorsPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many Actors.
+     *     @param {ActorsCreateManyArgs} args - Arguments to create many Actors.
+     *     @example
+     *     // Create many Actors
+     *     const actors = await prisma.actors.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends ActorsCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, ActorsCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Actors.
+     * @param {ActorsDeleteArgs} args - Arguments to delete one Actors.
+     * @example
+     * // Delete one Actors
+     * const Actors = await prisma.actors.delete({
+     *   where: {
+     *     // ... filter to delete one Actors
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends ActorsDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, ActorsDeleteArgs<ExtArgs>>
+    ): Prisma__ActorsClient<$Result.GetResult<Prisma.$ActorsPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one Actors.
+     * @param {ActorsUpdateArgs} args - Arguments to update one Actors.
+     * @example
+     * // Update one Actors
+     * const actors = await prisma.actors.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends ActorsUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, ActorsUpdateArgs<ExtArgs>>
+    ): Prisma__ActorsClient<$Result.GetResult<Prisma.$ActorsPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Actors.
+     * @param {ActorsDeleteManyArgs} args - Arguments to filter Actors to delete.
+     * @example
+     * // Delete a few Actors
+     * const { count } = await prisma.actors.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends ActorsDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, ActorsDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Actors.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ActorsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Actors
+     * const actors = await prisma.actors.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends ActorsUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, ActorsUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Actors.
+     * @param {ActorsUpsertArgs} args - Arguments to update or create a Actors.
+     * @example
+     * // Update or create a Actors
+     * const actors = await prisma.actors.upsert({
+     *   create: {
+     *     // ... data to create a Actors
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Actors we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends ActorsUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, ActorsUpsertArgs<ExtArgs>>
+    ): Prisma__ActorsClient<$Result.GetResult<Prisma.$ActorsPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of Actors.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ActorsCountArgs} args - Arguments to filter Actors to count.
+     * @example
+     * // Count the number of Actors
+     * const count = await prisma.actors.count({
+     *   where: {
+     *     // ... the filter for the Actors we want to count
+     *   }
+     * })
+    **/
+    count<T extends ActorsCountArgs>(
+      args?: Subset<T, ActorsCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ActorsCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Actors.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ActorsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ActorsAggregateArgs>(args: Subset<T, ActorsAggregateArgs>): Prisma.PrismaPromise<GetActorsAggregateType<T>>
+
+    /**
+     * Group by Actors.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ActorsGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ActorsGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ActorsGroupByArgs['orderBy'] }
+        : { orderBy?: ActorsGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ActorsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetActorsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Actors model
+   */
+  readonly fields: ActorsFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Actors.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ActorsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+    movies<T extends Actors$moviesArgs<ExtArgs> = {}>(args?: Subset<T, Actors$moviesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MoviesPayload<ExtArgs>, T, 'findMany'> | Null>;
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the Actors model
+   */ 
+  interface ActorsFieldRefs {
+    readonly id: FieldRef<"Actors", 'Int'>
+    readonly name: FieldRef<"Actors", 'String'>
+    readonly image: FieldRef<"Actors", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Actors findUnique
+   */
+  export type ActorsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Actors
+     */
+    select?: ActorsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ActorsInclude<ExtArgs> | null
+    /**
+     * Filter, which Actors to fetch.
+     */
+    where: ActorsWhereUniqueInput
+  }
+
+  /**
+   * Actors findUniqueOrThrow
+   */
+  export type ActorsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Actors
+     */
+    select?: ActorsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ActorsInclude<ExtArgs> | null
+    /**
+     * Filter, which Actors to fetch.
+     */
+    where: ActorsWhereUniqueInput
+  }
+
+  /**
+   * Actors findFirst
+   */
+  export type ActorsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Actors
+     */
+    select?: ActorsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ActorsInclude<ExtArgs> | null
+    /**
+     * Filter, which Actors to fetch.
+     */
+    where?: ActorsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Actors to fetch.
+     */
+    orderBy?: ActorsOrderByWithRelationInput | ActorsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Actors.
+     */
+    cursor?: ActorsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Actors from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Actors.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Actors.
+     */
+    distinct?: ActorsScalarFieldEnum | ActorsScalarFieldEnum[]
+  }
+
+  /**
+   * Actors findFirstOrThrow
+   */
+  export type ActorsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Actors
+     */
+    select?: ActorsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ActorsInclude<ExtArgs> | null
+    /**
+     * Filter, which Actors to fetch.
+     */
+    where?: ActorsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Actors to fetch.
+     */
+    orderBy?: ActorsOrderByWithRelationInput | ActorsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Actors.
+     */
+    cursor?: ActorsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Actors from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Actors.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Actors.
+     */
+    distinct?: ActorsScalarFieldEnum | ActorsScalarFieldEnum[]
+  }
+
+  /**
+   * Actors findMany
+   */
+  export type ActorsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Actors
+     */
+    select?: ActorsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ActorsInclude<ExtArgs> | null
+    /**
+     * Filter, which Actors to fetch.
+     */
+    where?: ActorsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Actors to fetch.
+     */
+    orderBy?: ActorsOrderByWithRelationInput | ActorsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Actors.
+     */
+    cursor?: ActorsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Actors from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Actors.
+     */
+    skip?: number
+    distinct?: ActorsScalarFieldEnum | ActorsScalarFieldEnum[]
+  }
+
+  /**
+   * Actors create
+   */
+  export type ActorsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Actors
+     */
+    select?: ActorsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ActorsInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Actors.
+     */
+    data: XOR<ActorsCreateInput, ActorsUncheckedCreateInput>
+  }
+
+  /**
+   * Actors createMany
+   */
+  export type ActorsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Actors.
+     */
+    data: ActorsCreateManyInput | ActorsCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Actors update
+   */
+  export type ActorsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Actors
+     */
+    select?: ActorsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ActorsInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Actors.
+     */
+    data: XOR<ActorsUpdateInput, ActorsUncheckedUpdateInput>
+    /**
+     * Choose, which Actors to update.
+     */
+    where: ActorsWhereUniqueInput
+  }
+
+  /**
+   * Actors updateMany
+   */
+  export type ActorsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Actors.
+     */
+    data: XOR<ActorsUpdateManyMutationInput, ActorsUncheckedUpdateManyInput>
+    /**
+     * Filter which Actors to update
+     */
+    where?: ActorsWhereInput
+  }
+
+  /**
+   * Actors upsert
+   */
+  export type ActorsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Actors
+     */
+    select?: ActorsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ActorsInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Actors to update in case it exists.
+     */
+    where: ActorsWhereUniqueInput
+    /**
+     * In case the Actors found by the `where` argument doesn't exist, create a new Actors with this data.
+     */
+    create: XOR<ActorsCreateInput, ActorsUncheckedCreateInput>
+    /**
+     * In case the Actors was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ActorsUpdateInput, ActorsUncheckedUpdateInput>
+  }
+
+  /**
+   * Actors delete
+   */
+  export type ActorsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Actors
+     */
+    select?: ActorsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ActorsInclude<ExtArgs> | null
+    /**
+     * Filter which Actors to delete.
+     */
+    where: ActorsWhereUniqueInput
+  }
+
+  /**
+   * Actors deleteMany
+   */
+  export type ActorsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Actors to delete
+     */
+    where?: ActorsWhereInput
+  }
+
+  /**
+   * Actors.movies
+   */
+  export type Actors$moviesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Movies
+     */
+    select?: MoviesSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MoviesInclude<ExtArgs> | null
+    where?: MoviesWhereInput
+    orderBy?: MoviesOrderByWithRelationInput | MoviesOrderByWithRelationInput[]
+    cursor?: MoviesWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MoviesScalarFieldEnum | MoviesScalarFieldEnum[]
+  }
+
+  /**
+   * Actors without action
+   */
+  export type ActorsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Actors
+     */
+    select?: ActorsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ActorsInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -5063,6 +7270,7 @@ export namespace Prisma {
     id: 'id',
     name: 'name',
     image: 'image',
+    sinopsis: 'sinopsis',
     createAt: 'createAt',
     updateAt: 'updateAt',
     userId: 'userId'
@@ -5089,6 +7297,24 @@ export namespace Prisma {
   export type MovieGenreScalarFieldEnum = (typeof MovieGenreScalarFieldEnum)[keyof typeof MovieGenreScalarFieldEnum]
 
 
+  export const LikeMoviesScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    moviesId: 'moviesId'
+  };
+
+  export type LikeMoviesScalarFieldEnum = (typeof LikeMoviesScalarFieldEnum)[keyof typeof LikeMoviesScalarFieldEnum]
+
+
+  export const ActorsScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    image: 'image'
+  };
+
+  export type ActorsScalarFieldEnum = (typeof ActorsScalarFieldEnum)[keyof typeof ActorsScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -5103,6 +7329,14 @@ export namespace Prisma {
   };
 
   export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
+  export const NullsOrder: {
+    first: 'first',
+    last: 'last'
+  };
+
+  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
   /**
@@ -5180,6 +7414,7 @@ export namespace Prisma {
     createAt?: DateTimeFilter<"User"> | Date | string
     updateAt?: DateTimeFilter<"User"> | Date | string
     movies?: MoviesListRelationFilter
+    likedBy?: LikeMoviesListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -5190,6 +7425,7 @@ export namespace Prisma {
     createAt?: SortOrder
     updateAt?: SortOrder
     movies?: MoviesOrderByRelationAggregateInput
+    likedBy?: LikeMoviesOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -5203,6 +7439,7 @@ export namespace Prisma {
     createAt?: DateTimeFilter<"User"> | Date | string
     updateAt?: DateTimeFilter<"User"> | Date | string
     movies?: MoviesListRelationFilter
+    likedBy?: LikeMoviesListRelationFilter
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -5238,22 +7475,28 @@ export namespace Prisma {
     id?: IntFilter<"Movies"> | number
     name?: StringFilter<"Movies"> | string
     image?: StringFilter<"Movies"> | string
+    sinopsis?: StringFilter<"Movies"> | string
     createAt?: DateTimeFilter<"Movies"> | Date | string
     updateAt?: DateTimeFilter<"Movies"> | Date | string
     userId?: IntFilter<"Movies"> | number
     user?: XOR<UserRelationFilter, UserWhereInput>
     genres?: MovieGenreListRelationFilter
+    actors?: ActorsListRelationFilter
+    likedBy?: LikeMoviesListRelationFilter
   }
 
   export type MoviesOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
     image?: SortOrder
+    sinopsis?: SortOrder
     createAt?: SortOrder
     updateAt?: SortOrder
     userId?: SortOrder
     user?: UserOrderByWithRelationInput
     genres?: MovieGenreOrderByRelationAggregateInput
+    actors?: ActorsOrderByRelationAggregateInput
+    likedBy?: LikeMoviesOrderByRelationAggregateInput
   }
 
   export type MoviesWhereUniqueInput = Prisma.AtLeast<{
@@ -5263,17 +7506,21 @@ export namespace Prisma {
     NOT?: MoviesWhereInput | MoviesWhereInput[]
     name?: StringFilter<"Movies"> | string
     image?: StringFilter<"Movies"> | string
+    sinopsis?: StringFilter<"Movies"> | string
     createAt?: DateTimeFilter<"Movies"> | Date | string
     updateAt?: DateTimeFilter<"Movies"> | Date | string
     userId?: IntFilter<"Movies"> | number
     user?: XOR<UserRelationFilter, UserWhereInput>
     genres?: MovieGenreListRelationFilter
+    actors?: ActorsListRelationFilter
+    likedBy?: LikeMoviesListRelationFilter
   }, "id">
 
   export type MoviesOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
     image?: SortOrder
+    sinopsis?: SortOrder
     createAt?: SortOrder
     updateAt?: SortOrder
     userId?: SortOrder
@@ -5291,6 +7538,7 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"Movies"> | number
     name?: StringWithAggregatesFilter<"Movies"> | string
     image?: StringWithAggregatesFilter<"Movies"> | string
+    sinopsis?: StringWithAggregatesFilter<"Movies"> | string
     createAt?: DateTimeWithAggregatesFilter<"Movies"> | Date | string
     updateAt?: DateTimeWithAggregatesFilter<"Movies"> | Date | string
     userId?: IntWithAggregatesFilter<"Movies"> | number
@@ -5394,6 +7642,103 @@ export namespace Prisma {
     genreId?: IntWithAggregatesFilter<"MovieGenre"> | number
   }
 
+  export type LikeMoviesWhereInput = {
+    AND?: LikeMoviesWhereInput | LikeMoviesWhereInput[]
+    OR?: LikeMoviesWhereInput[]
+    NOT?: LikeMoviesWhereInput | LikeMoviesWhereInput[]
+    id?: IntFilter<"LikeMovies"> | number
+    userId?: IntFilter<"LikeMovies"> | number
+    moviesId?: IntNullableFilter<"LikeMovies"> | number | null
+    user?: XOR<UserNullableRelationFilter, UserWhereInput> | null
+    movie?: XOR<MoviesNullableRelationFilter, MoviesWhereInput> | null
+  }
+
+  export type LikeMoviesOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    moviesId?: SortOrderInput | SortOrder
+    user?: UserOrderByWithRelationInput
+    movie?: MoviesOrderByWithRelationInput
+  }
+
+  export type LikeMoviesWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: LikeMoviesWhereInput | LikeMoviesWhereInput[]
+    OR?: LikeMoviesWhereInput[]
+    NOT?: LikeMoviesWhereInput | LikeMoviesWhereInput[]
+    userId?: IntFilter<"LikeMovies"> | number
+    moviesId?: IntNullableFilter<"LikeMovies"> | number | null
+    user?: XOR<UserNullableRelationFilter, UserWhereInput> | null
+    movie?: XOR<MoviesNullableRelationFilter, MoviesWhereInput> | null
+  }, "id">
+
+  export type LikeMoviesOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    moviesId?: SortOrderInput | SortOrder
+    _count?: LikeMoviesCountOrderByAggregateInput
+    _avg?: LikeMoviesAvgOrderByAggregateInput
+    _max?: LikeMoviesMaxOrderByAggregateInput
+    _min?: LikeMoviesMinOrderByAggregateInput
+    _sum?: LikeMoviesSumOrderByAggregateInput
+  }
+
+  export type LikeMoviesScalarWhereWithAggregatesInput = {
+    AND?: LikeMoviesScalarWhereWithAggregatesInput | LikeMoviesScalarWhereWithAggregatesInput[]
+    OR?: LikeMoviesScalarWhereWithAggregatesInput[]
+    NOT?: LikeMoviesScalarWhereWithAggregatesInput | LikeMoviesScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"LikeMovies"> | number
+    userId?: IntWithAggregatesFilter<"LikeMovies"> | number
+    moviesId?: IntNullableWithAggregatesFilter<"LikeMovies"> | number | null
+  }
+
+  export type ActorsWhereInput = {
+    AND?: ActorsWhereInput | ActorsWhereInput[]
+    OR?: ActorsWhereInput[]
+    NOT?: ActorsWhereInput | ActorsWhereInput[]
+    id?: IntFilter<"Actors"> | number
+    name?: StringFilter<"Actors"> | string
+    image?: StringFilter<"Actors"> | string
+    movies?: MoviesListRelationFilter
+  }
+
+  export type ActorsOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    image?: SortOrder
+    movies?: MoviesOrderByRelationAggregateInput
+  }
+
+  export type ActorsWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: ActorsWhereInput | ActorsWhereInput[]
+    OR?: ActorsWhereInput[]
+    NOT?: ActorsWhereInput | ActorsWhereInput[]
+    name?: StringFilter<"Actors"> | string
+    image?: StringFilter<"Actors"> | string
+    movies?: MoviesListRelationFilter
+  }, "id">
+
+  export type ActorsOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    image?: SortOrder
+    _count?: ActorsCountOrderByAggregateInput
+    _avg?: ActorsAvgOrderByAggregateInput
+    _max?: ActorsMaxOrderByAggregateInput
+    _min?: ActorsMinOrderByAggregateInput
+    _sum?: ActorsSumOrderByAggregateInput
+  }
+
+  export type ActorsScalarWhereWithAggregatesInput = {
+    AND?: ActorsScalarWhereWithAggregatesInput | ActorsScalarWhereWithAggregatesInput[]
+    OR?: ActorsScalarWhereWithAggregatesInput[]
+    NOT?: ActorsScalarWhereWithAggregatesInput | ActorsScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Actors"> | number
+    name?: StringWithAggregatesFilter<"Actors"> | string
+    image?: StringWithAggregatesFilter<"Actors"> | string
+  }
+
   export type UserCreateInput = {
     name: string
     email: string
@@ -5401,6 +7746,7 @@ export namespace Prisma {
     createAt?: Date | string
     updateAt?: Date | string
     movies?: MoviesCreateNestedManyWithoutUserInput
+    likedBy?: LikeMoviesCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -5411,6 +7757,7 @@ export namespace Prisma {
     createAt?: Date | string
     updateAt?: Date | string
     movies?: MoviesUncheckedCreateNestedManyWithoutUserInput
+    likedBy?: LikeMoviesUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -5420,6 +7767,7 @@ export namespace Prisma {
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
     movies?: MoviesUpdateManyWithoutUserNestedInput
+    likedBy?: LikeMoviesUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -5430,6 +7778,7 @@ export namespace Prisma {
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
     movies?: MoviesUncheckedUpdateManyWithoutUserNestedInput
+    likedBy?: LikeMoviesUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -5461,45 +7810,58 @@ export namespace Prisma {
   export type MoviesCreateInput = {
     name: string
     image: string
+    sinopsis: string
     createAt?: Date | string
     updateAt?: Date | string
     user: UserCreateNestedOneWithoutMoviesInput
     genres?: MovieGenreCreateNestedManyWithoutMovieInput
+    actors?: ActorsCreateNestedManyWithoutMoviesInput
+    likedBy?: LikeMoviesCreateNestedManyWithoutMovieInput
   }
 
   export type MoviesUncheckedCreateInput = {
     id?: number
     name: string
     image: string
+    sinopsis: string
     createAt?: Date | string
     updateAt?: Date | string
     userId: number
     genres?: MovieGenreUncheckedCreateNestedManyWithoutMovieInput
+    actors?: ActorsUncheckedCreateNestedManyWithoutMoviesInput
+    likedBy?: LikeMoviesUncheckedCreateNestedManyWithoutMovieInput
   }
 
   export type MoviesUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
+    sinopsis?: StringFieldUpdateOperationsInput | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutMoviesNestedInput
     genres?: MovieGenreUpdateManyWithoutMovieNestedInput
+    actors?: ActorsUpdateManyWithoutMoviesNestedInput
+    likedBy?: LikeMoviesUpdateManyWithoutMovieNestedInput
   }
 
   export type MoviesUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
+    sinopsis?: StringFieldUpdateOperationsInput | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: IntFieldUpdateOperationsInput | number
     genres?: MovieGenreUncheckedUpdateManyWithoutMovieNestedInput
+    actors?: ActorsUncheckedUpdateManyWithoutMoviesNestedInput
+    likedBy?: LikeMoviesUncheckedUpdateManyWithoutMovieNestedInput
   }
 
   export type MoviesCreateManyInput = {
     id?: number
     name: string
     image: string
+    sinopsis: string
     createAt?: Date | string
     updateAt?: Date | string
     userId: number
@@ -5508,6 +7870,7 @@ export namespace Prisma {
   export type MoviesUpdateManyMutationInput = {
     name?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
+    sinopsis?: StringFieldUpdateOperationsInput | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -5516,6 +7879,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
+    sinopsis?: StringFieldUpdateOperationsInput | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: IntFieldUpdateOperationsInput | number
@@ -5605,6 +7969,87 @@ export namespace Prisma {
     genreId?: IntFieldUpdateOperationsInput | number
   }
 
+  export type LikeMoviesCreateInput = {
+    user?: UserCreateNestedOneWithoutLikedByInput
+    movie?: MoviesCreateNestedOneWithoutLikedByInput
+  }
+
+  export type LikeMoviesUncheckedCreateInput = {
+    id?: number
+    userId: number
+    moviesId?: number | null
+  }
+
+  export type LikeMoviesUpdateInput = {
+    user?: UserUpdateOneWithoutLikedByNestedInput
+    movie?: MoviesUpdateOneWithoutLikedByNestedInput
+  }
+
+  export type LikeMoviesUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    moviesId?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type LikeMoviesCreateManyInput = {
+    id?: number
+    userId: number
+    moviesId?: number | null
+  }
+
+  export type LikeMoviesUpdateManyMutationInput = {
+
+  }
+
+  export type LikeMoviesUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    moviesId?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type ActorsCreateInput = {
+    name: string
+    image: string
+    movies?: MoviesCreateNestedManyWithoutActorsInput
+  }
+
+  export type ActorsUncheckedCreateInput = {
+    id?: number
+    name: string
+    image: string
+    movies?: MoviesUncheckedCreateNestedManyWithoutActorsInput
+  }
+
+  export type ActorsUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    movies?: MoviesUpdateManyWithoutActorsNestedInput
+  }
+
+  export type ActorsUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    movies?: MoviesUncheckedUpdateManyWithoutActorsNestedInput
+  }
+
+  export type ActorsCreateManyInput = {
+    id?: number
+    name: string
+    image: string
+  }
+
+  export type ActorsUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ActorsUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+  }
+
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -5648,7 +8093,17 @@ export namespace Prisma {
     none?: MoviesWhereInput
   }
 
+  export type LikeMoviesListRelationFilter = {
+    every?: LikeMoviesWhereInput
+    some?: LikeMoviesWhereInput
+    none?: LikeMoviesWhereInput
+  }
+
   export type MoviesOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type LikeMoviesOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -5746,7 +8201,17 @@ export namespace Prisma {
     none?: MovieGenreWhereInput
   }
 
+  export type ActorsListRelationFilter = {
+    every?: ActorsWhereInput
+    some?: ActorsWhereInput
+    none?: ActorsWhereInput
+  }
+
   export type MovieGenreOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ActorsOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -5754,6 +8219,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     image?: SortOrder
+    sinopsis?: SortOrder
     createAt?: SortOrder
     updateAt?: SortOrder
     userId?: SortOrder
@@ -5768,6 +8234,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     image?: SortOrder
+    sinopsis?: SortOrder
     createAt?: SortOrder
     updateAt?: SortOrder
     userId?: SortOrder
@@ -5777,6 +8244,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     image?: SortOrder
+    sinopsis?: SortOrder
     createAt?: SortOrder
     updateAt?: SortOrder
     userId?: SortOrder
@@ -5856,6 +8324,104 @@ export namespace Prisma {
     genreId?: SortOrder
   }
 
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type UserNullableRelationFilter = {
+    is?: UserWhereInput | null
+    isNot?: UserWhereInput | null
+  }
+
+  export type MoviesNullableRelationFilter = {
+    is?: MoviesWhereInput | null
+    isNot?: MoviesWhereInput | null
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
+  }
+
+  export type LikeMoviesCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    moviesId?: SortOrder
+  }
+
+  export type LikeMoviesAvgOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    moviesId?: SortOrder
+  }
+
+  export type LikeMoviesMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    moviesId?: SortOrder
+  }
+
+  export type LikeMoviesMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    moviesId?: SortOrder
+  }
+
+  export type LikeMoviesSumOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    moviesId?: SortOrder
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type ActorsCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    image?: SortOrder
+  }
+
+  export type ActorsAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type ActorsMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    image?: SortOrder
+  }
+
+  export type ActorsMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    image?: SortOrder
+  }
+
+  export type ActorsSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
   export type MoviesCreateNestedManyWithoutUserInput = {
     create?: XOR<MoviesCreateWithoutUserInput, MoviesUncheckedCreateWithoutUserInput> | MoviesCreateWithoutUserInput[] | MoviesUncheckedCreateWithoutUserInput[]
     connectOrCreate?: MoviesCreateOrConnectWithoutUserInput | MoviesCreateOrConnectWithoutUserInput[]
@@ -5863,11 +8429,25 @@ export namespace Prisma {
     connect?: MoviesWhereUniqueInput | MoviesWhereUniqueInput[]
   }
 
+  export type LikeMoviesCreateNestedManyWithoutUserInput = {
+    create?: XOR<LikeMoviesCreateWithoutUserInput, LikeMoviesUncheckedCreateWithoutUserInput> | LikeMoviesCreateWithoutUserInput[] | LikeMoviesUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: LikeMoviesCreateOrConnectWithoutUserInput | LikeMoviesCreateOrConnectWithoutUserInput[]
+    createMany?: LikeMoviesCreateManyUserInputEnvelope
+    connect?: LikeMoviesWhereUniqueInput | LikeMoviesWhereUniqueInput[]
+  }
+
   export type MoviesUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<MoviesCreateWithoutUserInput, MoviesUncheckedCreateWithoutUserInput> | MoviesCreateWithoutUserInput[] | MoviesUncheckedCreateWithoutUserInput[]
     connectOrCreate?: MoviesCreateOrConnectWithoutUserInput | MoviesCreateOrConnectWithoutUserInput[]
     createMany?: MoviesCreateManyUserInputEnvelope
     connect?: MoviesWhereUniqueInput | MoviesWhereUniqueInput[]
+  }
+
+  export type LikeMoviesUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<LikeMoviesCreateWithoutUserInput, LikeMoviesUncheckedCreateWithoutUserInput> | LikeMoviesCreateWithoutUserInput[] | LikeMoviesUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: LikeMoviesCreateOrConnectWithoutUserInput | LikeMoviesCreateOrConnectWithoutUserInput[]
+    createMany?: LikeMoviesCreateManyUserInputEnvelope
+    connect?: LikeMoviesWhereUniqueInput | LikeMoviesWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -5892,6 +8472,20 @@ export namespace Prisma {
     deleteMany?: MoviesScalarWhereInput | MoviesScalarWhereInput[]
   }
 
+  export type LikeMoviesUpdateManyWithoutUserNestedInput = {
+    create?: XOR<LikeMoviesCreateWithoutUserInput, LikeMoviesUncheckedCreateWithoutUserInput> | LikeMoviesCreateWithoutUserInput[] | LikeMoviesUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: LikeMoviesCreateOrConnectWithoutUserInput | LikeMoviesCreateOrConnectWithoutUserInput[]
+    upsert?: LikeMoviesUpsertWithWhereUniqueWithoutUserInput | LikeMoviesUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: LikeMoviesCreateManyUserInputEnvelope
+    set?: LikeMoviesWhereUniqueInput | LikeMoviesWhereUniqueInput[]
+    disconnect?: LikeMoviesWhereUniqueInput | LikeMoviesWhereUniqueInput[]
+    delete?: LikeMoviesWhereUniqueInput | LikeMoviesWhereUniqueInput[]
+    connect?: LikeMoviesWhereUniqueInput | LikeMoviesWhereUniqueInput[]
+    update?: LikeMoviesUpdateWithWhereUniqueWithoutUserInput | LikeMoviesUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: LikeMoviesUpdateManyWithWhereWithoutUserInput | LikeMoviesUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: LikeMoviesScalarWhereInput | LikeMoviesScalarWhereInput[]
+  }
+
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
@@ -5914,6 +8508,20 @@ export namespace Prisma {
     deleteMany?: MoviesScalarWhereInput | MoviesScalarWhereInput[]
   }
 
+  export type LikeMoviesUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<LikeMoviesCreateWithoutUserInput, LikeMoviesUncheckedCreateWithoutUserInput> | LikeMoviesCreateWithoutUserInput[] | LikeMoviesUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: LikeMoviesCreateOrConnectWithoutUserInput | LikeMoviesCreateOrConnectWithoutUserInput[]
+    upsert?: LikeMoviesUpsertWithWhereUniqueWithoutUserInput | LikeMoviesUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: LikeMoviesCreateManyUserInputEnvelope
+    set?: LikeMoviesWhereUniqueInput | LikeMoviesWhereUniqueInput[]
+    disconnect?: LikeMoviesWhereUniqueInput | LikeMoviesWhereUniqueInput[]
+    delete?: LikeMoviesWhereUniqueInput | LikeMoviesWhereUniqueInput[]
+    connect?: LikeMoviesWhereUniqueInput | LikeMoviesWhereUniqueInput[]
+    update?: LikeMoviesUpdateWithWhereUniqueWithoutUserInput | LikeMoviesUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: LikeMoviesUpdateManyWithWhereWithoutUserInput | LikeMoviesUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: LikeMoviesScalarWhereInput | LikeMoviesScalarWhereInput[]
+  }
+
   export type UserCreateNestedOneWithoutMoviesInput = {
     create?: XOR<UserCreateWithoutMoviesInput, UserUncheckedCreateWithoutMoviesInput>
     connectOrCreate?: UserCreateOrConnectWithoutMoviesInput
@@ -5927,11 +8535,37 @@ export namespace Prisma {
     connect?: MovieGenreWhereUniqueInput | MovieGenreWhereUniqueInput[]
   }
 
+  export type ActorsCreateNestedManyWithoutMoviesInput = {
+    create?: XOR<ActorsCreateWithoutMoviesInput, ActorsUncheckedCreateWithoutMoviesInput> | ActorsCreateWithoutMoviesInput[] | ActorsUncheckedCreateWithoutMoviesInput[]
+    connectOrCreate?: ActorsCreateOrConnectWithoutMoviesInput | ActorsCreateOrConnectWithoutMoviesInput[]
+    connect?: ActorsWhereUniqueInput | ActorsWhereUniqueInput[]
+  }
+
+  export type LikeMoviesCreateNestedManyWithoutMovieInput = {
+    create?: XOR<LikeMoviesCreateWithoutMovieInput, LikeMoviesUncheckedCreateWithoutMovieInput> | LikeMoviesCreateWithoutMovieInput[] | LikeMoviesUncheckedCreateWithoutMovieInput[]
+    connectOrCreate?: LikeMoviesCreateOrConnectWithoutMovieInput | LikeMoviesCreateOrConnectWithoutMovieInput[]
+    createMany?: LikeMoviesCreateManyMovieInputEnvelope
+    connect?: LikeMoviesWhereUniqueInput | LikeMoviesWhereUniqueInput[]
+  }
+
   export type MovieGenreUncheckedCreateNestedManyWithoutMovieInput = {
     create?: XOR<MovieGenreCreateWithoutMovieInput, MovieGenreUncheckedCreateWithoutMovieInput> | MovieGenreCreateWithoutMovieInput[] | MovieGenreUncheckedCreateWithoutMovieInput[]
     connectOrCreate?: MovieGenreCreateOrConnectWithoutMovieInput | MovieGenreCreateOrConnectWithoutMovieInput[]
     createMany?: MovieGenreCreateManyMovieInputEnvelope
     connect?: MovieGenreWhereUniqueInput | MovieGenreWhereUniqueInput[]
+  }
+
+  export type ActorsUncheckedCreateNestedManyWithoutMoviesInput = {
+    create?: XOR<ActorsCreateWithoutMoviesInput, ActorsUncheckedCreateWithoutMoviesInput> | ActorsCreateWithoutMoviesInput[] | ActorsUncheckedCreateWithoutMoviesInput[]
+    connectOrCreate?: ActorsCreateOrConnectWithoutMoviesInput | ActorsCreateOrConnectWithoutMoviesInput[]
+    connect?: ActorsWhereUniqueInput | ActorsWhereUniqueInput[]
+  }
+
+  export type LikeMoviesUncheckedCreateNestedManyWithoutMovieInput = {
+    create?: XOR<LikeMoviesCreateWithoutMovieInput, LikeMoviesUncheckedCreateWithoutMovieInput> | LikeMoviesCreateWithoutMovieInput[] | LikeMoviesUncheckedCreateWithoutMovieInput[]
+    connectOrCreate?: LikeMoviesCreateOrConnectWithoutMovieInput | LikeMoviesCreateOrConnectWithoutMovieInput[]
+    createMany?: LikeMoviesCreateManyMovieInputEnvelope
+    connect?: LikeMoviesWhereUniqueInput | LikeMoviesWhereUniqueInput[]
   }
 
   export type UserUpdateOneRequiredWithoutMoviesNestedInput = {
@@ -5956,6 +8590,33 @@ export namespace Prisma {
     deleteMany?: MovieGenreScalarWhereInput | MovieGenreScalarWhereInput[]
   }
 
+  export type ActorsUpdateManyWithoutMoviesNestedInput = {
+    create?: XOR<ActorsCreateWithoutMoviesInput, ActorsUncheckedCreateWithoutMoviesInput> | ActorsCreateWithoutMoviesInput[] | ActorsUncheckedCreateWithoutMoviesInput[]
+    connectOrCreate?: ActorsCreateOrConnectWithoutMoviesInput | ActorsCreateOrConnectWithoutMoviesInput[]
+    upsert?: ActorsUpsertWithWhereUniqueWithoutMoviesInput | ActorsUpsertWithWhereUniqueWithoutMoviesInput[]
+    set?: ActorsWhereUniqueInput | ActorsWhereUniqueInput[]
+    disconnect?: ActorsWhereUniqueInput | ActorsWhereUniqueInput[]
+    delete?: ActorsWhereUniqueInput | ActorsWhereUniqueInput[]
+    connect?: ActorsWhereUniqueInput | ActorsWhereUniqueInput[]
+    update?: ActorsUpdateWithWhereUniqueWithoutMoviesInput | ActorsUpdateWithWhereUniqueWithoutMoviesInput[]
+    updateMany?: ActorsUpdateManyWithWhereWithoutMoviesInput | ActorsUpdateManyWithWhereWithoutMoviesInput[]
+    deleteMany?: ActorsScalarWhereInput | ActorsScalarWhereInput[]
+  }
+
+  export type LikeMoviesUpdateManyWithoutMovieNestedInput = {
+    create?: XOR<LikeMoviesCreateWithoutMovieInput, LikeMoviesUncheckedCreateWithoutMovieInput> | LikeMoviesCreateWithoutMovieInput[] | LikeMoviesUncheckedCreateWithoutMovieInput[]
+    connectOrCreate?: LikeMoviesCreateOrConnectWithoutMovieInput | LikeMoviesCreateOrConnectWithoutMovieInput[]
+    upsert?: LikeMoviesUpsertWithWhereUniqueWithoutMovieInput | LikeMoviesUpsertWithWhereUniqueWithoutMovieInput[]
+    createMany?: LikeMoviesCreateManyMovieInputEnvelope
+    set?: LikeMoviesWhereUniqueInput | LikeMoviesWhereUniqueInput[]
+    disconnect?: LikeMoviesWhereUniqueInput | LikeMoviesWhereUniqueInput[]
+    delete?: LikeMoviesWhereUniqueInput | LikeMoviesWhereUniqueInput[]
+    connect?: LikeMoviesWhereUniqueInput | LikeMoviesWhereUniqueInput[]
+    update?: LikeMoviesUpdateWithWhereUniqueWithoutMovieInput | LikeMoviesUpdateWithWhereUniqueWithoutMovieInput[]
+    updateMany?: LikeMoviesUpdateManyWithWhereWithoutMovieInput | LikeMoviesUpdateManyWithWhereWithoutMovieInput[]
+    deleteMany?: LikeMoviesScalarWhereInput | LikeMoviesScalarWhereInput[]
+  }
+
   export type MovieGenreUncheckedUpdateManyWithoutMovieNestedInput = {
     create?: XOR<MovieGenreCreateWithoutMovieInput, MovieGenreUncheckedCreateWithoutMovieInput> | MovieGenreCreateWithoutMovieInput[] | MovieGenreUncheckedCreateWithoutMovieInput[]
     connectOrCreate?: MovieGenreCreateOrConnectWithoutMovieInput | MovieGenreCreateOrConnectWithoutMovieInput[]
@@ -5968,6 +8629,33 @@ export namespace Prisma {
     update?: MovieGenreUpdateWithWhereUniqueWithoutMovieInput | MovieGenreUpdateWithWhereUniqueWithoutMovieInput[]
     updateMany?: MovieGenreUpdateManyWithWhereWithoutMovieInput | MovieGenreUpdateManyWithWhereWithoutMovieInput[]
     deleteMany?: MovieGenreScalarWhereInput | MovieGenreScalarWhereInput[]
+  }
+
+  export type ActorsUncheckedUpdateManyWithoutMoviesNestedInput = {
+    create?: XOR<ActorsCreateWithoutMoviesInput, ActorsUncheckedCreateWithoutMoviesInput> | ActorsCreateWithoutMoviesInput[] | ActorsUncheckedCreateWithoutMoviesInput[]
+    connectOrCreate?: ActorsCreateOrConnectWithoutMoviesInput | ActorsCreateOrConnectWithoutMoviesInput[]
+    upsert?: ActorsUpsertWithWhereUniqueWithoutMoviesInput | ActorsUpsertWithWhereUniqueWithoutMoviesInput[]
+    set?: ActorsWhereUniqueInput | ActorsWhereUniqueInput[]
+    disconnect?: ActorsWhereUniqueInput | ActorsWhereUniqueInput[]
+    delete?: ActorsWhereUniqueInput | ActorsWhereUniqueInput[]
+    connect?: ActorsWhereUniqueInput | ActorsWhereUniqueInput[]
+    update?: ActorsUpdateWithWhereUniqueWithoutMoviesInput | ActorsUpdateWithWhereUniqueWithoutMoviesInput[]
+    updateMany?: ActorsUpdateManyWithWhereWithoutMoviesInput | ActorsUpdateManyWithWhereWithoutMoviesInput[]
+    deleteMany?: ActorsScalarWhereInput | ActorsScalarWhereInput[]
+  }
+
+  export type LikeMoviesUncheckedUpdateManyWithoutMovieNestedInput = {
+    create?: XOR<LikeMoviesCreateWithoutMovieInput, LikeMoviesUncheckedCreateWithoutMovieInput> | LikeMoviesCreateWithoutMovieInput[] | LikeMoviesUncheckedCreateWithoutMovieInput[]
+    connectOrCreate?: LikeMoviesCreateOrConnectWithoutMovieInput | LikeMoviesCreateOrConnectWithoutMovieInput[]
+    upsert?: LikeMoviesUpsertWithWhereUniqueWithoutMovieInput | LikeMoviesUpsertWithWhereUniqueWithoutMovieInput[]
+    createMany?: LikeMoviesCreateManyMovieInputEnvelope
+    set?: LikeMoviesWhereUniqueInput | LikeMoviesWhereUniqueInput[]
+    disconnect?: LikeMoviesWhereUniqueInput | LikeMoviesWhereUniqueInput[]
+    delete?: LikeMoviesWhereUniqueInput | LikeMoviesWhereUniqueInput[]
+    connect?: LikeMoviesWhereUniqueInput | LikeMoviesWhereUniqueInput[]
+    update?: LikeMoviesUpdateWithWhereUniqueWithoutMovieInput | LikeMoviesUpdateWithWhereUniqueWithoutMovieInput[]
+    updateMany?: LikeMoviesUpdateManyWithWhereWithoutMovieInput | LikeMoviesUpdateManyWithWhereWithoutMovieInput[]
+    deleteMany?: LikeMoviesScalarWhereInput | LikeMoviesScalarWhereInput[]
   }
 
   export type MovieGenreCreateNestedManyWithoutGenreInput = {
@@ -6038,6 +8726,84 @@ export namespace Prisma {
     upsert?: GenreUpsertWithoutMoviesInput
     connect?: GenreWhereUniqueInput
     update?: XOR<XOR<GenreUpdateToOneWithWhereWithoutMoviesInput, GenreUpdateWithoutMoviesInput>, GenreUncheckedUpdateWithoutMoviesInput>
+  }
+
+  export type UserCreateNestedOneWithoutLikedByInput = {
+    create?: XOR<UserCreateWithoutLikedByInput, UserUncheckedCreateWithoutLikedByInput>
+    connectOrCreate?: UserCreateOrConnectWithoutLikedByInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type MoviesCreateNestedOneWithoutLikedByInput = {
+    create?: XOR<MoviesCreateWithoutLikedByInput, MoviesUncheckedCreateWithoutLikedByInput>
+    connectOrCreate?: MoviesCreateOrConnectWithoutLikedByInput
+    connect?: MoviesWhereUniqueInput
+  }
+
+  export type UserUpdateOneWithoutLikedByNestedInput = {
+    create?: XOR<UserCreateWithoutLikedByInput, UserUncheckedCreateWithoutLikedByInput>
+    connectOrCreate?: UserCreateOrConnectWithoutLikedByInput
+    upsert?: UserUpsertWithoutLikedByInput
+    disconnect?: UserWhereInput | boolean
+    delete?: UserWhereInput | boolean
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutLikedByInput, UserUpdateWithoutLikedByInput>, UserUncheckedUpdateWithoutLikedByInput>
+  }
+
+  export type MoviesUpdateOneWithoutLikedByNestedInput = {
+    create?: XOR<MoviesCreateWithoutLikedByInput, MoviesUncheckedCreateWithoutLikedByInput>
+    connectOrCreate?: MoviesCreateOrConnectWithoutLikedByInput
+    upsert?: MoviesUpsertWithoutLikedByInput
+    disconnect?: MoviesWhereInput | boolean
+    delete?: MoviesWhereInput | boolean
+    connect?: MoviesWhereUniqueInput
+    update?: XOR<XOR<MoviesUpdateToOneWithWhereWithoutLikedByInput, MoviesUpdateWithoutLikedByInput>, MoviesUncheckedUpdateWithoutLikedByInput>
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type MoviesCreateNestedManyWithoutActorsInput = {
+    create?: XOR<MoviesCreateWithoutActorsInput, MoviesUncheckedCreateWithoutActorsInput> | MoviesCreateWithoutActorsInput[] | MoviesUncheckedCreateWithoutActorsInput[]
+    connectOrCreate?: MoviesCreateOrConnectWithoutActorsInput | MoviesCreateOrConnectWithoutActorsInput[]
+    connect?: MoviesWhereUniqueInput | MoviesWhereUniqueInput[]
+  }
+
+  export type MoviesUncheckedCreateNestedManyWithoutActorsInput = {
+    create?: XOR<MoviesCreateWithoutActorsInput, MoviesUncheckedCreateWithoutActorsInput> | MoviesCreateWithoutActorsInput[] | MoviesUncheckedCreateWithoutActorsInput[]
+    connectOrCreate?: MoviesCreateOrConnectWithoutActorsInput | MoviesCreateOrConnectWithoutActorsInput[]
+    connect?: MoviesWhereUniqueInput | MoviesWhereUniqueInput[]
+  }
+
+  export type MoviesUpdateManyWithoutActorsNestedInput = {
+    create?: XOR<MoviesCreateWithoutActorsInput, MoviesUncheckedCreateWithoutActorsInput> | MoviesCreateWithoutActorsInput[] | MoviesUncheckedCreateWithoutActorsInput[]
+    connectOrCreate?: MoviesCreateOrConnectWithoutActorsInput | MoviesCreateOrConnectWithoutActorsInput[]
+    upsert?: MoviesUpsertWithWhereUniqueWithoutActorsInput | MoviesUpsertWithWhereUniqueWithoutActorsInput[]
+    set?: MoviesWhereUniqueInput | MoviesWhereUniqueInput[]
+    disconnect?: MoviesWhereUniqueInput | MoviesWhereUniqueInput[]
+    delete?: MoviesWhereUniqueInput | MoviesWhereUniqueInput[]
+    connect?: MoviesWhereUniqueInput | MoviesWhereUniqueInput[]
+    update?: MoviesUpdateWithWhereUniqueWithoutActorsInput | MoviesUpdateWithWhereUniqueWithoutActorsInput[]
+    updateMany?: MoviesUpdateManyWithWhereWithoutActorsInput | MoviesUpdateManyWithWhereWithoutActorsInput[]
+    deleteMany?: MoviesScalarWhereInput | MoviesScalarWhereInput[]
+  }
+
+  export type MoviesUncheckedUpdateManyWithoutActorsNestedInput = {
+    create?: XOR<MoviesCreateWithoutActorsInput, MoviesUncheckedCreateWithoutActorsInput> | MoviesCreateWithoutActorsInput[] | MoviesUncheckedCreateWithoutActorsInput[]
+    connectOrCreate?: MoviesCreateOrConnectWithoutActorsInput | MoviesCreateOrConnectWithoutActorsInput[]
+    upsert?: MoviesUpsertWithWhereUniqueWithoutActorsInput | MoviesUpsertWithWhereUniqueWithoutActorsInput[]
+    set?: MoviesWhereUniqueInput | MoviesWhereUniqueInput[]
+    disconnect?: MoviesWhereUniqueInput | MoviesWhereUniqueInput[]
+    delete?: MoviesWhereUniqueInput | MoviesWhereUniqueInput[]
+    connect?: MoviesWhereUniqueInput | MoviesWhereUniqueInput[]
+    update?: MoviesUpdateWithWhereUniqueWithoutActorsInput | MoviesUpdateWithWhereUniqueWithoutActorsInput[]
+    updateMany?: MoviesUpdateManyWithWhereWithoutActorsInput | MoviesUpdateManyWithWhereWithoutActorsInput[]
+    deleteMany?: MoviesScalarWhereInput | MoviesScalarWhereInput[]
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -6134,21 +8900,65 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
   export type MoviesCreateWithoutUserInput = {
     name: string
     image: string
+    sinopsis: string
     createAt?: Date | string
     updateAt?: Date | string
     genres?: MovieGenreCreateNestedManyWithoutMovieInput
+    actors?: ActorsCreateNestedManyWithoutMoviesInput
+    likedBy?: LikeMoviesCreateNestedManyWithoutMovieInput
   }
 
   export type MoviesUncheckedCreateWithoutUserInput = {
     id?: number
     name: string
     image: string
+    sinopsis: string
     createAt?: Date | string
     updateAt?: Date | string
     genres?: MovieGenreUncheckedCreateNestedManyWithoutMovieInput
+    actors?: ActorsUncheckedCreateNestedManyWithoutMoviesInput
+    likedBy?: LikeMoviesUncheckedCreateNestedManyWithoutMovieInput
   }
 
   export type MoviesCreateOrConnectWithoutUserInput = {
@@ -6158,6 +8968,25 @@ export namespace Prisma {
 
   export type MoviesCreateManyUserInputEnvelope = {
     data: MoviesCreateManyUserInput | MoviesCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type LikeMoviesCreateWithoutUserInput = {
+    movie?: MoviesCreateNestedOneWithoutLikedByInput
+  }
+
+  export type LikeMoviesUncheckedCreateWithoutUserInput = {
+    id?: number
+    moviesId?: number | null
+  }
+
+  export type LikeMoviesCreateOrConnectWithoutUserInput = {
+    where: LikeMoviesWhereUniqueInput
+    create: XOR<LikeMoviesCreateWithoutUserInput, LikeMoviesUncheckedCreateWithoutUserInput>
+  }
+
+  export type LikeMoviesCreateManyUserInputEnvelope = {
+    data: LikeMoviesCreateManyUserInput | LikeMoviesCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -6184,9 +9013,35 @@ export namespace Prisma {
     id?: IntFilter<"Movies"> | number
     name?: StringFilter<"Movies"> | string
     image?: StringFilter<"Movies"> | string
+    sinopsis?: StringFilter<"Movies"> | string
     createAt?: DateTimeFilter<"Movies"> | Date | string
     updateAt?: DateTimeFilter<"Movies"> | Date | string
     userId?: IntFilter<"Movies"> | number
+  }
+
+  export type LikeMoviesUpsertWithWhereUniqueWithoutUserInput = {
+    where: LikeMoviesWhereUniqueInput
+    update: XOR<LikeMoviesUpdateWithoutUserInput, LikeMoviesUncheckedUpdateWithoutUserInput>
+    create: XOR<LikeMoviesCreateWithoutUserInput, LikeMoviesUncheckedCreateWithoutUserInput>
+  }
+
+  export type LikeMoviesUpdateWithWhereUniqueWithoutUserInput = {
+    where: LikeMoviesWhereUniqueInput
+    data: XOR<LikeMoviesUpdateWithoutUserInput, LikeMoviesUncheckedUpdateWithoutUserInput>
+  }
+
+  export type LikeMoviesUpdateManyWithWhereWithoutUserInput = {
+    where: LikeMoviesScalarWhereInput
+    data: XOR<LikeMoviesUpdateManyMutationInput, LikeMoviesUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type LikeMoviesScalarWhereInput = {
+    AND?: LikeMoviesScalarWhereInput | LikeMoviesScalarWhereInput[]
+    OR?: LikeMoviesScalarWhereInput[]
+    NOT?: LikeMoviesScalarWhereInput | LikeMoviesScalarWhereInput[]
+    id?: IntFilter<"LikeMovies"> | number
+    userId?: IntFilter<"LikeMovies"> | number
+    moviesId?: IntNullableFilter<"LikeMovies"> | number | null
   }
 
   export type UserCreateWithoutMoviesInput = {
@@ -6195,6 +9050,7 @@ export namespace Prisma {
     password: string
     createAt?: Date | string
     updateAt?: Date | string
+    likedBy?: LikeMoviesCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutMoviesInput = {
@@ -6204,6 +9060,7 @@ export namespace Prisma {
     password: string
     createAt?: Date | string
     updateAt?: Date | string
+    likedBy?: LikeMoviesUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutMoviesInput = {
@@ -6229,6 +9086,41 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type ActorsCreateWithoutMoviesInput = {
+    name: string
+    image: string
+  }
+
+  export type ActorsUncheckedCreateWithoutMoviesInput = {
+    id?: number
+    name: string
+    image: string
+  }
+
+  export type ActorsCreateOrConnectWithoutMoviesInput = {
+    where: ActorsWhereUniqueInput
+    create: XOR<ActorsCreateWithoutMoviesInput, ActorsUncheckedCreateWithoutMoviesInput>
+  }
+
+  export type LikeMoviesCreateWithoutMovieInput = {
+    user?: UserCreateNestedOneWithoutLikedByInput
+  }
+
+  export type LikeMoviesUncheckedCreateWithoutMovieInput = {
+    id?: number
+    userId: number
+  }
+
+  export type LikeMoviesCreateOrConnectWithoutMovieInput = {
+    where: LikeMoviesWhereUniqueInput
+    create: XOR<LikeMoviesCreateWithoutMovieInput, LikeMoviesUncheckedCreateWithoutMovieInput>
+  }
+
+  export type LikeMoviesCreateManyMovieInputEnvelope = {
+    data: LikeMoviesCreateManyMovieInput | LikeMoviesCreateManyMovieInput[]
+    skipDuplicates?: boolean
+  }
+
   export type UserUpsertWithoutMoviesInput = {
     update: XOR<UserUpdateWithoutMoviesInput, UserUncheckedUpdateWithoutMoviesInput>
     create: XOR<UserCreateWithoutMoviesInput, UserUncheckedCreateWithoutMoviesInput>
@@ -6246,6 +9138,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    likedBy?: LikeMoviesUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutMoviesInput = {
@@ -6255,6 +9148,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    likedBy?: LikeMoviesUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type MovieGenreUpsertWithWhereUniqueWithoutMovieInput = {
@@ -6279,6 +9173,47 @@ export namespace Prisma {
     NOT?: MovieGenreScalarWhereInput | MovieGenreScalarWhereInput[]
     movieId?: IntFilter<"MovieGenre"> | number
     genreId?: IntFilter<"MovieGenre"> | number
+  }
+
+  export type ActorsUpsertWithWhereUniqueWithoutMoviesInput = {
+    where: ActorsWhereUniqueInput
+    update: XOR<ActorsUpdateWithoutMoviesInput, ActorsUncheckedUpdateWithoutMoviesInput>
+    create: XOR<ActorsCreateWithoutMoviesInput, ActorsUncheckedCreateWithoutMoviesInput>
+  }
+
+  export type ActorsUpdateWithWhereUniqueWithoutMoviesInput = {
+    where: ActorsWhereUniqueInput
+    data: XOR<ActorsUpdateWithoutMoviesInput, ActorsUncheckedUpdateWithoutMoviesInput>
+  }
+
+  export type ActorsUpdateManyWithWhereWithoutMoviesInput = {
+    where: ActorsScalarWhereInput
+    data: XOR<ActorsUpdateManyMutationInput, ActorsUncheckedUpdateManyWithoutMoviesInput>
+  }
+
+  export type ActorsScalarWhereInput = {
+    AND?: ActorsScalarWhereInput | ActorsScalarWhereInput[]
+    OR?: ActorsScalarWhereInput[]
+    NOT?: ActorsScalarWhereInput | ActorsScalarWhereInput[]
+    id?: IntFilter<"Actors"> | number
+    name?: StringFilter<"Actors"> | string
+    image?: StringFilter<"Actors"> | string
+  }
+
+  export type LikeMoviesUpsertWithWhereUniqueWithoutMovieInput = {
+    where: LikeMoviesWhereUniqueInput
+    update: XOR<LikeMoviesUpdateWithoutMovieInput, LikeMoviesUncheckedUpdateWithoutMovieInput>
+    create: XOR<LikeMoviesCreateWithoutMovieInput, LikeMoviesUncheckedCreateWithoutMovieInput>
+  }
+
+  export type LikeMoviesUpdateWithWhereUniqueWithoutMovieInput = {
+    where: LikeMoviesWhereUniqueInput
+    data: XOR<LikeMoviesUpdateWithoutMovieInput, LikeMoviesUncheckedUpdateWithoutMovieInput>
+  }
+
+  export type LikeMoviesUpdateManyWithWhereWithoutMovieInput = {
+    where: LikeMoviesScalarWhereInput
+    data: XOR<LikeMoviesUpdateManyMutationInput, LikeMoviesUncheckedUpdateManyWithoutMovieInput>
   }
 
   export type MovieGenreCreateWithoutGenreInput = {
@@ -6318,18 +9253,24 @@ export namespace Prisma {
   export type MoviesCreateWithoutGenresInput = {
     name: string
     image: string
+    sinopsis: string
     createAt?: Date | string
     updateAt?: Date | string
     user: UserCreateNestedOneWithoutMoviesInput
+    actors?: ActorsCreateNestedManyWithoutMoviesInput
+    likedBy?: LikeMoviesCreateNestedManyWithoutMovieInput
   }
 
   export type MoviesUncheckedCreateWithoutGenresInput = {
     id?: number
     name: string
     image: string
+    sinopsis: string
     createAt?: Date | string
     updateAt?: Date | string
     userId: number
+    actors?: ActorsUncheckedCreateNestedManyWithoutMoviesInput
+    likedBy?: LikeMoviesUncheckedCreateNestedManyWithoutMovieInput
   }
 
   export type MoviesCreateOrConnectWithoutGenresInput = {
@@ -6369,18 +9310,24 @@ export namespace Prisma {
   export type MoviesUpdateWithoutGenresInput = {
     name?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
+    sinopsis?: StringFieldUpdateOperationsInput | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutMoviesNestedInput
+    actors?: ActorsUpdateManyWithoutMoviesNestedInput
+    likedBy?: LikeMoviesUpdateManyWithoutMovieNestedInput
   }
 
   export type MoviesUncheckedUpdateWithoutGenresInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
+    sinopsis?: StringFieldUpdateOperationsInput | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: IntFieldUpdateOperationsInput | number
+    actors?: ActorsUncheckedUpdateManyWithoutMoviesNestedInput
+    likedBy?: LikeMoviesUncheckedUpdateManyWithoutMovieNestedInput
   }
 
   export type GenreUpsertWithoutMoviesInput = {
@@ -6407,41 +9354,233 @@ export namespace Prisma {
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type UserCreateWithoutLikedByInput = {
+    name: string
+    email: string
+    password: string
+    createAt?: Date | string
+    updateAt?: Date | string
+    movies?: MoviesCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutLikedByInput = {
+    id?: number
+    name: string
+    email: string
+    password: string
+    createAt?: Date | string
+    updateAt?: Date | string
+    movies?: MoviesUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutLikedByInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutLikedByInput, UserUncheckedCreateWithoutLikedByInput>
+  }
+
+  export type MoviesCreateWithoutLikedByInput = {
+    name: string
+    image: string
+    sinopsis: string
+    createAt?: Date | string
+    updateAt?: Date | string
+    user: UserCreateNestedOneWithoutMoviesInput
+    genres?: MovieGenreCreateNestedManyWithoutMovieInput
+    actors?: ActorsCreateNestedManyWithoutMoviesInput
+  }
+
+  export type MoviesUncheckedCreateWithoutLikedByInput = {
+    id?: number
+    name: string
+    image: string
+    sinopsis: string
+    createAt?: Date | string
+    updateAt?: Date | string
+    userId: number
+    genres?: MovieGenreUncheckedCreateNestedManyWithoutMovieInput
+    actors?: ActorsUncheckedCreateNestedManyWithoutMoviesInput
+  }
+
+  export type MoviesCreateOrConnectWithoutLikedByInput = {
+    where: MoviesWhereUniqueInput
+    create: XOR<MoviesCreateWithoutLikedByInput, MoviesUncheckedCreateWithoutLikedByInput>
+  }
+
+  export type UserUpsertWithoutLikedByInput = {
+    update: XOR<UserUpdateWithoutLikedByInput, UserUncheckedUpdateWithoutLikedByInput>
+    create: XOR<UserCreateWithoutLikedByInput, UserUncheckedCreateWithoutLikedByInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutLikedByInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutLikedByInput, UserUncheckedUpdateWithoutLikedByInput>
+  }
+
+  export type UserUpdateWithoutLikedByInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    createAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    movies?: MoviesUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutLikedByInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    createAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    movies?: MoviesUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type MoviesUpsertWithoutLikedByInput = {
+    update: XOR<MoviesUpdateWithoutLikedByInput, MoviesUncheckedUpdateWithoutLikedByInput>
+    create: XOR<MoviesCreateWithoutLikedByInput, MoviesUncheckedCreateWithoutLikedByInput>
+    where?: MoviesWhereInput
+  }
+
+  export type MoviesUpdateToOneWithWhereWithoutLikedByInput = {
+    where?: MoviesWhereInput
+    data: XOR<MoviesUpdateWithoutLikedByInput, MoviesUncheckedUpdateWithoutLikedByInput>
+  }
+
+  export type MoviesUpdateWithoutLikedByInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    sinopsis?: StringFieldUpdateOperationsInput | string
+    createAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutMoviesNestedInput
+    genres?: MovieGenreUpdateManyWithoutMovieNestedInput
+    actors?: ActorsUpdateManyWithoutMoviesNestedInput
+  }
+
+  export type MoviesUncheckedUpdateWithoutLikedByInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    sinopsis?: StringFieldUpdateOperationsInput | string
+    createAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: IntFieldUpdateOperationsInput | number
+    genres?: MovieGenreUncheckedUpdateManyWithoutMovieNestedInput
+    actors?: ActorsUncheckedUpdateManyWithoutMoviesNestedInput
+  }
+
+  export type MoviesCreateWithoutActorsInput = {
+    name: string
+    image: string
+    sinopsis: string
+    createAt?: Date | string
+    updateAt?: Date | string
+    user: UserCreateNestedOneWithoutMoviesInput
+    genres?: MovieGenreCreateNestedManyWithoutMovieInput
+    likedBy?: LikeMoviesCreateNestedManyWithoutMovieInput
+  }
+
+  export type MoviesUncheckedCreateWithoutActorsInput = {
+    id?: number
+    name: string
+    image: string
+    sinopsis: string
+    createAt?: Date | string
+    updateAt?: Date | string
+    userId: number
+    genres?: MovieGenreUncheckedCreateNestedManyWithoutMovieInput
+    likedBy?: LikeMoviesUncheckedCreateNestedManyWithoutMovieInput
+  }
+
+  export type MoviesCreateOrConnectWithoutActorsInput = {
+    where: MoviesWhereUniqueInput
+    create: XOR<MoviesCreateWithoutActorsInput, MoviesUncheckedCreateWithoutActorsInput>
+  }
+
+  export type MoviesUpsertWithWhereUniqueWithoutActorsInput = {
+    where: MoviesWhereUniqueInput
+    update: XOR<MoviesUpdateWithoutActorsInput, MoviesUncheckedUpdateWithoutActorsInput>
+    create: XOR<MoviesCreateWithoutActorsInput, MoviesUncheckedCreateWithoutActorsInput>
+  }
+
+  export type MoviesUpdateWithWhereUniqueWithoutActorsInput = {
+    where: MoviesWhereUniqueInput
+    data: XOR<MoviesUpdateWithoutActorsInput, MoviesUncheckedUpdateWithoutActorsInput>
+  }
+
+  export type MoviesUpdateManyWithWhereWithoutActorsInput = {
+    where: MoviesScalarWhereInput
+    data: XOR<MoviesUpdateManyMutationInput, MoviesUncheckedUpdateManyWithoutActorsInput>
+  }
+
   export type MoviesCreateManyUserInput = {
     id?: number
     name: string
     image: string
+    sinopsis: string
     createAt?: Date | string
     updateAt?: Date | string
+  }
+
+  export type LikeMoviesCreateManyUserInput = {
+    id?: number
+    moviesId?: number | null
   }
 
   export type MoviesUpdateWithoutUserInput = {
     name?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
+    sinopsis?: StringFieldUpdateOperationsInput | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
     genres?: MovieGenreUpdateManyWithoutMovieNestedInput
+    actors?: ActorsUpdateManyWithoutMoviesNestedInput
+    likedBy?: LikeMoviesUpdateManyWithoutMovieNestedInput
   }
 
   export type MoviesUncheckedUpdateWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
+    sinopsis?: StringFieldUpdateOperationsInput | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
     genres?: MovieGenreUncheckedUpdateManyWithoutMovieNestedInput
+    actors?: ActorsUncheckedUpdateManyWithoutMoviesNestedInput
+    likedBy?: LikeMoviesUncheckedUpdateManyWithoutMovieNestedInput
   }
 
   export type MoviesUncheckedUpdateManyWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
+    sinopsis?: StringFieldUpdateOperationsInput | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type LikeMoviesUpdateWithoutUserInput = {
+    movie?: MoviesUpdateOneWithoutLikedByNestedInput
+  }
+
+  export type LikeMoviesUncheckedUpdateWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    moviesId?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type LikeMoviesUncheckedUpdateManyWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    moviesId?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
   export type MovieGenreCreateManyMovieInput = {
     genreId: number
+  }
+
+  export type LikeMoviesCreateManyMovieInput = {
+    id?: number
+    userId: number
   }
 
   export type MovieGenreUpdateWithoutMovieInput = {
@@ -6454,6 +9593,37 @@ export namespace Prisma {
 
   export type MovieGenreUncheckedUpdateManyWithoutMovieInput = {
     genreId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ActorsUpdateWithoutMoviesInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ActorsUncheckedUpdateWithoutMoviesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ActorsUncheckedUpdateManyWithoutMoviesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type LikeMoviesUpdateWithoutMovieInput = {
+    user?: UserUpdateOneWithoutLikedByNestedInput
+  }
+
+  export type LikeMoviesUncheckedUpdateWithoutMovieInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type LikeMoviesUncheckedUpdateManyWithoutMovieInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
   }
 
   export type MovieGenreCreateManyGenreInput = {
@@ -6470,6 +9640,39 @@ export namespace Prisma {
 
   export type MovieGenreUncheckedUpdateManyWithoutGenreInput = {
     movieId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type MoviesUpdateWithoutActorsInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    sinopsis?: StringFieldUpdateOperationsInput | string
+    createAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutMoviesNestedInput
+    genres?: MovieGenreUpdateManyWithoutMovieNestedInput
+    likedBy?: LikeMoviesUpdateManyWithoutMovieNestedInput
+  }
+
+  export type MoviesUncheckedUpdateWithoutActorsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    sinopsis?: StringFieldUpdateOperationsInput | string
+    createAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: IntFieldUpdateOperationsInput | number
+    genres?: MovieGenreUncheckedUpdateManyWithoutMovieNestedInput
+    likedBy?: LikeMoviesUncheckedUpdateManyWithoutMovieNestedInput
+  }
+
+  export type MoviesUncheckedUpdateManyWithoutActorsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    sinopsis?: StringFieldUpdateOperationsInput | string
+    createAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: IntFieldUpdateOperationsInput | number
   }
 
 
@@ -6490,6 +9693,10 @@ export namespace Prisma {
      */
     export type GenreCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = GenreCountOutputTypeDefaultArgs<ExtArgs>
     /**
+     * @deprecated Use ActorsCountOutputTypeDefaultArgs instead
+     */
+    export type ActorsCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ActorsCountOutputTypeDefaultArgs<ExtArgs>
+    /**
      * @deprecated Use UserDefaultArgs instead
      */
     export type UserArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = UserDefaultArgs<ExtArgs>
@@ -6505,6 +9712,14 @@ export namespace Prisma {
      * @deprecated Use MovieGenreDefaultArgs instead
      */
     export type MovieGenreArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = MovieGenreDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use LikeMoviesDefaultArgs instead
+     */
+    export type LikeMoviesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = LikeMoviesDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use ActorsDefaultArgs instead
+     */
+    export type ActorsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ActorsDefaultArgs<ExtArgs>
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany

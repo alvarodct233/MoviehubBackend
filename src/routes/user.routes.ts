@@ -4,9 +4,9 @@ import { checkJwtMiddlewares } from "../middlewares/checkjwt.middlewares";
 
 const userRouter = Router();
 
-userRouter.get("/", checkJwtMiddlewares, getAllUser)
-userRouter.post("/", checkJwtMiddlewares, CreateUser)
-userRouter.patch("/:userId", checkJwtMiddlewares, updateUser)
-userRouter.delete("/:userId", checkJwtMiddlewares, deleteUser)
+userRouter.get("/", getAllUser)
+userRouter.post("/", CreateUser)
+userRouter.patch("/:userId", updateUser)
+userRouter.delete("/:userId", deleteUser)
 
 export default userRouter;

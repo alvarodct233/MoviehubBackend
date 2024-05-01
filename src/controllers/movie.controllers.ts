@@ -2,14 +2,15 @@ import { Request, Response } from "express";
 import prisma from "../db/client";
 
 export const createMovie = async (req: Request, res: Response) => {
-	const { name, image, genres } = req.body;
-	// const userId = parseInt(req.params.userId);
-	const userId = req.params.userId;
+	const { name, image, genres, sinopsis } = req.body;
+	console.log(req.body)
+	const userId = parseInt(req.params.userId);
+	// const genreId = parseInt(req.params.genreId);
 
-	if (!name || !image) {
+	if (!name || !image || !sinopsis) {
 		return res
 			.status(400)
-			.send({ message: "The fields name and image are required" });
+			.send({ message: "The fields name, image and sinopsis are required" });
 	}
 
 	if (!userId) {
@@ -22,6 +23,7 @@ export const createMovie = async (req: Request, res: Response) => {
 				data: {
 					name: name,
 					image: image,
+					sinopsis: sinopsis,
 					userId: userId,
 				},
 			});
@@ -39,9 +41,6 @@ export const createMovie = async (req: Request, res: Response) => {
 			return prisma.movies.findUnique({
 				where: {
 					id: newMovie.id,
-				},
-				include: {
-					genre: true,
 				},
 			});
 		});

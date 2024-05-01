@@ -5,6 +5,6 @@ import { checkJwtMiddlewares } from "../middlewares/checkjwt.middlewares";
 const genreRouter = Router( );
 
 genreRouter.get("/", getAllGenres)
-genreRouter.post("/", checkJwtMiddlewares, createGenres)
+genreRouter.post("/", createGenres)
 
 export default genreRouter

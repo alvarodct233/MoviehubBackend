@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import UserModel from "../models/user.model";
+// import UserModel from "../models/user.model";
 import prisma from "../db/client";
 import bcrypt  from "bcrypt";
 
@@ -39,8 +39,8 @@ export const CreateUser = async (req: Request, res: Response) => {
 
 export const updateUser = async (req: Request, res: Response) => {
   const { name, email, password } = req.body;
-  // const  userId  = parseInt(req.params.userId);
-  const userId = req.params.userId
+  const  userId  = parseInt(req.params.userId);
+  // const userId = req.params.userId
 
   const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -61,8 +61,8 @@ export const updateUser = async (req: Request, res: Response) => {
 };
 
 export const deleteUser = async (req: Request, res: Response) => {
-  // const  userId  = parseInt(req.params.userId);
-  const userId = req.params.userId
+  const  userId  = parseInt(req.params.userId);
+  // const userId = req.params.userId
   try {
     const userDeleted = await prisma.user.delete({ 
       where: { id: userId}

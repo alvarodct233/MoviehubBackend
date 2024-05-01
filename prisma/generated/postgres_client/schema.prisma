@@ -1,48 +1,67 @@
 generator client {
-    provider        = "prisma-client-js"
-    previewFeatures = ["driverAdapters"]
-    output          = "./generated/postgres_client"
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
+  output          = "./generated/postgres_client"
 }
 
 datasource db {
-    provider = "postgresql"
-    url      = env("POSTGRESQL_URL")
+  provider = "postgresql"
+  url      = env("POSTGRESQL_URL")
 }
 
 model User {
-    id       Int      @id @default(autoincrement())
-    name     String   @db.VarChar(255)
-    email    String   @unique @db.VarChar(100)
-    password String   @db.VarChar(255)
-    createAt DateTime @default(now())
-    updateAt DateTime @updatedAt
-    movies   Movies[]
+  id       Int          @id @default(autoincrement())
+  name     String       @db.VarChar(255)
+  email    String       @unique @db.VarChar(100)
+  password String       @db.VarChar(6000)
+  createAt DateTime     @default(now())
+  updateAt DateTime     @updatedAt
+  movies   Movies[]
+  likedBy  LikeMovies[]
 }
 
 model Movies {
-    id       Int      @id @default(autoincrement())
-    name     String   @db.VarChar(255)
-    image    String   @db.VarChar(255)
-    createAt DateTime @default(now())
-    updateAt DateTime @updatedAt
-    userId   Int
-    user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-    genres   MovieGenre[]
+  id       Int          @id @default(autoincrement())
+  name     String       @db.VarChar(255)
+  image    String       @db.VarChar(255)
+  sinopsis String       @db.VarChar(1000)
+  createAt DateTime     @default(now())
+  updateAt DateTime     @updatedAt
+  userId   Int
+  user     User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  genres   MovieGenre[]
+  actors   Actors[]
+  likedBy  LikeMovies[]
 }
 
 model Genre {
-    id       Int      @id @default(autoincrement())
-    name     String   @db.VarChar(255)
-    createAt DateTime @default(now())
-    updateAt DateTime @updatedAt
-    movies   MovieGenre[]
-    }
+  id       Int          @id @default(autoincrement())
+  name     String       @db.VarChar(255)
+  createAt DateTime     @default(now())
+  updateAt DateTime     @updatedAt
+  movies   MovieGenre[]
+}
 
 model MovieGenre {
-    movieId Int
-    genreId Int
-    movie   Movies @relation(fields: [movieId], references: [id])
-    genre   Genre  @relation(fields: [genreId], references: [id])
+  movieId Int
+  genreId Int
+  movie   Movies @relation(fields: [movieId], references: [id])
+  genre   Genre  @relation(fields: [genreId], references: [id])
 
-    @@id([movieId, genreId])
+  @@id([movieId, genreId])
+}
+
+model LikeMovies {
+  id       Int     @id @default(autoincrement())
+  userId   Int
+  user     User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  moviesId Int?
+  movie    Movies? @relation(fields: [moviesId], references: [id], onDelete: Cascade)
+}
+
+model Actors {
+  id     Int      @id @default(autoincrement())
+  name   String
+  image  String
+  movies Movies[]
 }
