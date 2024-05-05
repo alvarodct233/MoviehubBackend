@@ -45,12 +45,12 @@ export const CONFIG: TConfig = {
             PORT: process.env.PORT || 5716
         },
         db: {
-            URI: process.env.MONDOBD_URI || "mongodb://localhost:27017"
+            URI: process.env.POSTGRESQL_URL || "postgresql://neondb_owner:GL3ut4TcNXAW@ep-green-voice-a53kdczn.us-east-2.aws.neon.tech/neondb?sslmode=require"
         },
         auth0: {
-            client_origin: process.env.CLIENT_ORIGIN,
-            audience: process.env.AUTH0_AUDIENCE,
-            issuer: process.env.AUTH0_ISSUER
+            client_origin: process.env.AUTH0_CLIENT_ID,
+            audience: process.env.AUTH0_BASE_URL,
+            issuer: process.env.AUTH0_ISSUER_BASE_URL
         },
         cloudinary: {
             cloudinary_cloud_name: process.env.CLOUDINARY_CLOUD_NAME || "error",
@@ -66,9 +66,9 @@ export const CONFIG: TConfig = {
             URI: process.env.MONDOBD_URI || "mongodb://localhost:27017"
         },
         auth0: {
-            client_origin: process.env.CLIENT_ORIGIN,
-            audience: process.env.AUTH0_AUDIENCE,
-            issuer: process.env.AUTH0_ISSUER
+            client_origin: process.env.AUTH0_CLIENT_ID,
+            audience: process.env.AUTH0_BASE_URL,
+            issuer: process.env.AUTH0_ISSUER_BASE_URL
         },
         cloudinary: {
             cloudinary_cloud_name: process.env.CLOUDINARY_CLOUD_NAME || "error",

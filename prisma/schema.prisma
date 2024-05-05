@@ -15,7 +15,6 @@ model User {
   createAt DateTime     @default(now())
   updateAt DateTime     @updatedAt
   movies   Movies[]
-  likedBy  LikeMovies[]
 }
 
 model Movies {
@@ -28,8 +27,6 @@ model Movies {
   userId   Int
   user     User         @relation(fields: [userId], references: [id], onDelete: Cascade)
   genres   MovieGenre[]
-  actors   Actors[]
-  likedBy  LikeMovies[]
 }
 
 model Genre {
@@ -47,19 +44,4 @@ model MovieGenre {
   genre   Genre  @relation(fields: [genreId], references: [id])
 
   @@id([movieId, genreId])
-}
-
-model LikeMovies {
-  id       Int     @id @default(autoincrement())
-  userId   Int
-  user     User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
-  moviesId Int?
-  movie    Movies? @relation(fields: [moviesId], references: [id], onDelete: Cascade)
-}
-
-model Actors {
-  id     Int      @id @default(autoincrement())
-  name   String
-  image  String
-  movies Movies[]
 }
