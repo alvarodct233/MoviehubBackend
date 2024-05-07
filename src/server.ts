@@ -4,7 +4,7 @@ import movieRoutes from './routes/movie.routes';
 import genreRouter from './routes/genre.routes';
 import { checkJwtMiddlewares } from './middlewares/checkjwt.middlewares';
 import { requestRouter } from "./routes/requests.routes";
-import cors from 'cors';
+const cors = require('cors');
 
 
 const app = express();
@@ -16,4 +16,4 @@ app.use("/movie", movieRoutes )
 app.use("/genre", genreRouter)
 app.use("/api", checkJwtMiddlewares, requestRouter)
 
-export default app; 
+export default app;   
