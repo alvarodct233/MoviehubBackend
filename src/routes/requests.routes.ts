@@ -14,4 +14,4 @@ export const requestRouter = Router();
 requestRouter.get("/public", publicRequest);
 
 
-requestRouter.get("/protected",checkJwtMiddlewares, protectedRequest);
+requestRouter.get("/protected", protectedRequest);
