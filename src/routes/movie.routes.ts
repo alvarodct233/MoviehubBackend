@@ -1,11 +1,23 @@
+// import { Router } from "express";
+// import { createMovie, getAllMovies } from "../controllers/movie.controllers";
+// import { checkJwtMiddlewares } from "../middlewares/checkjwt.middlewares";
+
+// const movieRoutes = Router();
+
+// movieRoutes.get("/", getAllMovies)
+// movieRoutes.post("/:userId", createMovie)
+
+
+// export default movieRoutes;  
+
 import { Router } from "express";
-import { createMovie, getAllMovies } from "../controllers/movie.controllers";
-import { checkJwtMiddlewares } from "../middlewares/checkjwt.middlewares";
+import { createMovie, getAllMovies, deleteMovie, updateMovie } from "./../controllers/movie.controllers";
 
-const movieRoutes = Router();
+const router = Router();
 
-movieRoutes.get("/", getAllMovies)
-movieRoutes.post("/:userId", createMovie)
+router.post("/:userId", createMovie);
+router.get("/", getAllMovies);
+router.delete("/:movieId", deleteMovie);
+router.patch("/:movieId", updateMovie);
 
-
-export default movieRoutes;  
+export default router;

@@ -53,3 +53,64 @@ export const getAllMovies = async (req: Request, res: Response) => {
 		res.status(400).send(error);
 	}
 };
+
+
+export const deleteMovie = async (req: Request, res: Response) => {
+    const movieId = parseInt(req.params.movieId);
+
+    if (!movieId) {
+        return res.status(400).send({ message: "The field movieId is required" });
+    }
+
+    try {
+        await prisma.movies.delete({
+            where: { id: movieId },
+        });
+
+        res.status(200).send({ message: "Movie deleted successfully" });
+    } catch (error) {
+        res.status(400).send({ message: "Error deleting movie", error });
+    }
+};
+
+export const updateMovie = async (req: Request, res: Response) => {
+    const movieId = parseInt(req.params.movieId);
+    const { name, image, genres, sinopsis } = req.body;
+
+    if (!movieId) {
+        return res.status(400).send({ message: "The field movieId is required" });
+    }
+
+    try {
+        const updatedMovie = await prisma.movies.update({
+            where: { id: movieId },
+            data: {
+                name: name,
+                image: image,
+                sinopsis: sinopsis,
+            },
+        });
+
+        if (genres && genres.length) {
+            await prisma.movieGenre.deleteMany({
+                where: { movieId: movieId },
+            });
+
+            await Promise.all(genres.map(async (genreId: number) => {
+                await prisma.movieGenre.create({
+                    data: {
+                        movieId: movieId,
+                        genreId: genreId,
+                    },
+                });
+            }));
+        }
+
+        res.status(200).send({
+            message: "Movie updated successfully",
+            data: updatedMovie,
+        });
+    } catch (error) {
+        res.status(400).send({ message: "Error updating movie", error });
+    }
+};
